@@ -1,0 +1,1521 @@
+fileFormatVersion: 2
+guid: 4124ca214ae1873458766753413607ed
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5577115901712349942
+    second: Golden Sushi Conveyor Belt Slice_0
+  - first:
+      213: 1880517973285645159
+    second: Golden Sushi Conveyor Belt Slice_1
+  - first:
+      213: -8248927551621153615
+    second: Golden Sushi Conveyor Belt Slice_2
+  - first:
+      213: -8857715813382132932
+    second: Golden Sushi Conveyor Belt Slice_3
+  - first:
+      213: -764544612652829686
+    second: Golden Sushi Conveyor Belt Slice_4
+  - first:
+      213: 3930556284639120564
+    second: Golden Sushi Conveyor Belt Slice_5
+  - first:
+      213: -8483503316987347037
+    second: Golden Sushi Conveyor Belt Slice_6
+  - first:
+      213: -1511354900715445306
+    second: Golden Sushi Conveyor Belt Slice_7
+  - first:
+      213: -264099823910466185
+    second: Golden Sushi Conveyor Belt Slice_8
+  - first:
+      213: -1039830756048095183
+    second: Golden Sushi Conveyor Belt Slice_9
+  - first:
+      213: 2913908610537678136
+    second: Golden Sushi Conveyor Belt Slice_10
+  - first:
+      213: -4378926886521676118
+    second: Golden Sushi Conveyor Belt Slice_11
+  - first:
+      213: 886247636633678035
+    second: Golden Sushi Conveyor Belt Slice_12
+  - first:
+      213: -4133952084673440499
+    second: Golden Sushi Conveyor Belt Slice_13
+  - first:
+      213: -589227513129887971
+    second: Golden Sushi Conveyor Belt Slice_14
+  - first:
+      213: 4629478010398096277
+    second: Golden Sushi Conveyor Belt Slice_15
+  - first:
+      213: -824095286687534057
+    second: Golden Sushi Conveyor Belt Slice_16
+  - first:
+      213: 1371215808322253532
+    second: Golden Sushi Conveyor Belt Slice_17
+  - first:
+      213: -4020265010379881438
+    second: Golden Sushi Conveyor Belt Slice_18
+  - first:
+      213: -8042038356588956503
+    second: Golden Sushi Conveyor Belt Slice_19
+  - first:
+      213: -5950352831393068048
+    second: Golden Sushi Conveyor Belt Slice_20
+  - first:
+      213: 7335179665101192671
+    second: Golden Sushi Conveyor Belt Slice_21
+  - first:
+      213: 2437670932320202073
+    second: Golden Sushi Conveyor Belt Slice_22
+  - first:
+      213: -7092818119962089569
+    second: Golden Sushi Conveyor Belt Slice_23
+  - first:
+      213: 2934377872019324454
+    second: Golden Sushi Conveyor Belt Slice_24
+  - first:
+      213: 2136852759158935114
+    second: Golden Sushi Conveyor Belt Slice_25
+  - first:
+      213: -7122382399699411625
+    second: Golden Sushi Conveyor Belt Slice_26
+  - first:
+      213: -624112541535113790
+    second: Golden Sushi Conveyor Belt Slice_27
+  - first:
+      213: 1078322727323008711
+    second: Golden Sushi Conveyor Belt Slice_28
+  - first:
+      213: -5095585495385422346
+    second: Golden Sushi Conveyor Belt Slice_29
+  - first:
+      213: 7345209987170214855
+    second: Golden Sushi Conveyor Belt Slice_30
+  - first:
+      213: 2209714738991778832
+    second: Golden Sushi Conveyor Belt Slice_31
+  - first:
+      213: -8019839351352986357
+    second: Golden Sushi Conveyor Belt Slice_32
+  - first:
+      213: -7591660521016780586
+    second: Golden Sushi Conveyor Belt Slice_33
+  - first:
+      213: 7587938910892283224
+    second: Golden Sushi Conveyor Belt Slice_34
+  - first:
+      213: -3333689174089624911
+    second: Golden Sushi Conveyor Belt Slice_35
+  - first:
+      213: -8366304891759427470
+    second: Golden Sushi Conveyor Belt Slice_36
+  - first:
+      213: -5560322879861090744
+    second: Golden Sushi Conveyor Belt Slice_37
+  - first:
+      213: -749851437444619210
+    second: Golden Sushi Conveyor Belt Slice_38
+  - first:
+      213: 9112792487191680919
+    second: Golden Sushi Conveyor Belt Slice_39
+  - first:
+      213: -6849986179821337260
+    second: Golden Sushi Conveyor Belt Slice_40
+  - first:
+      213: 9090333199611540844
+    second: Golden Sushi Conveyor Belt Slice_41
+  - first:
+      213: -8489325074612250538
+    second: Golden Sushi Conveyor Belt Slice_42
+  - first:
+      213: 5569064687536540335
+    second: Golden Sushi Conveyor Belt Slice_43
+  - first:
+      213: -2891053590505954965
+    second: Golden Sushi Conveyor Belt Slice_44
+  - first:
+      213: 4523383264183799831
+    second: Golden Sushi Conveyor Belt Slice_45
+  - first:
+      213: 2509877704740482385
+    second: Golden Sushi Conveyor Belt Slice_46
+  - first:
+      213: -4225299916411910854
+    second: Golden Sushi Conveyor Belt Slice_47
+  - first:
+      213: 1246293419229773663
+    second: Golden Sushi Conveyor Belt Slice_48
+  - first:
+      213: 4725871787683735038
+    second: Golden Sushi Conveyor Belt Slice_49
+  - first:
+      213: -579463929141375095
+    second: Golden Sushi Conveyor Belt Slice_50
+  - first:
+      213: -2744514903277737565
+    second: Golden Sushi Conveyor Belt Slice_51
+  - first:
+      213: 7674235815163620850
+    second: Golden Sushi Conveyor Belt Slice_52
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_0
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 505
+        width: 203
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fa3fb02d55e56d40800000000000000
+      internalID: 5577115901712349942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_1
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 521
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76bad6f1221f81a10800000000000000
+      internalID: 1880517973285645159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_2
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 522
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bc30b3b81ce58d80800000000000000
+      internalID: -8248927551621153615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_3
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 536
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3b6ffdd562131580800000000000000
+      internalID: -8857715813382132932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_4
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 532
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a04b3ebb9bac365f0800000000000000
+      internalID: -764544612652829686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_5
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 464
+        width: 99
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bc089bad142c8630800000000000000
+      internalID: 3930556284639120564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_6
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 512
+        width: 35
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3affe144eaa844a80800000000000000
+      internalID: -8483503316987347037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_7
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 538
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c36f4da9b6960be0800000000000000
+      internalID: -1511354900715445306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_8
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 520
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77dc2920c9ab55cf0800000000000000
+      internalID: -264099823910466185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_9
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 520
+        width: 13
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1383a37cf67c191f0800000000000000
+      internalID: -1039830756048095183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_10
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 498
+        width: 71
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 835ec075178407820800000000000000
+      internalID: 2913908610537678136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_11
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 502
+        width: 39
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaed77f723dea33c0800000000000000
+      internalID: -4378926886521676118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_12
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 500
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d0749ca7859c4c00800000000000000
+      internalID: 886247636633678035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_13
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 498
+        width: 156
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d05dd8a4b7041a6c0800000000000000
+      internalID: -4133952084673440499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_14
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 498
+        width: 14
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d17910cd2b4a2d7f0800000000000000
+      internalID: -589227513129887971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_15
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 530
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59bb241f8b53f3040800000000000000
+      internalID: 4629478010398096277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_16
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 490
+        width: 101
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7147ae7f3b93094f0800000000000000
+      internalID: -824095286687534057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_17
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 482
+        width: 104
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd2b27d3389870310800000000000000
+      internalID: 1371215808322253532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_18
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 522
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2240069f5462538c0800000000000000
+      internalID: -4020265010379881438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_19
+      rect:
+        serializedVersion: 2
+        x: 1046
+        y: 500
+        width: 17
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a4f27529b0f46090800000000000000
+      internalID: -8042038356588956503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_20
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 474
+        width: 146
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fb839c40a91c6da0800000000000000
+      internalID: -5950352831393068048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_21
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 512
+        width: 9
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdd760eba0bcbc560800000000000000
+      internalID: 7335179665101192671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_22
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 514
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95dad303cc854d120800000000000000
+      internalID: 2437670932320202073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_23
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 522
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f97a43fcf7f319d90800000000000000
+      internalID: -7092818119962089569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_24
+      rect:
+        serializedVersion: 2
+        x: 1221
+        y: 504
+        width: 37
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62e7a7aa02109b820800000000000000
+      internalID: 2934377872019324454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_25
+      rect:
+        serializedVersion: 2
+        x: 1283
+        y: 521
+        width: 108
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4e4bfe4340a7ad10800000000000000
+      internalID: 2136852759158935114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_26
+      rect:
+        serializedVersion: 2
+        x: 1373
+        y: 536
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75d1c6781f6382d90800000000000000
+      internalID: -7122382399699411625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_27
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 506
+        width: 69
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cdeeed33f4b657f0800000000000000
+      internalID: -624112541535113790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_28
+      rect:
+        serializedVersion: 2
+        x: 1420
+        y: 514
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ce715baec8f6fe00800000000000000
+      internalID: 1078322727323008711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_29
+      rect:
+        serializedVersion: 2
+        x: 1454
+        y: 481
+        width: 124
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f54be05df7d849b0800000000000000
+      internalID: -5095585495385422346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_30
+      rect:
+        serializedVersion: 2
+        x: 1454
+        y: 546
+        width: 9
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c3aee5119d6fe560800000000000000
+      internalID: 7345209987170214855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_31
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 532
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01ccc88f8db7aae10800000000000000
+      internalID: 2209714738991778832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_32
+      rect:
+        serializedVersion: 2
+        x: 1550
+        y: 546
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b05f7e2d99ec3b090800000000000000
+      internalID: -8019839351352986357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_33
+      rect:
+        serializedVersion: 2
+        x: 1561
+        y: 529
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d8107d7af005a690800000000000000
+      internalID: -7591660521016780586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_34
+      rect:
+        serializedVersion: 2
+        x: 1583
+        y: 530
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8555911ac36cd4960800000000000000
+      internalID: 7587938910892283224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_35
+      rect:
+        serializedVersion: 2
+        x: 1649
+        y: 543
+        width: 27
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b292dadb5b5cb1d0800000000000000
+      internalID: -3333689174089624911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_36
+      rect:
+        serializedVersion: 2
+        x: 1673
+        y: 530
+        width: 36
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 270011c070ae4eb80800000000000000
+      internalID: -8366304891759427470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_37
+      rect:
+        serializedVersion: 2
+        x: 1697
+        y: 540
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8461765fcc3c5d2b0800000000000000
+      internalID: -5560322879861090744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_38
+      rect:
+        serializedVersion: 2
+        x: 1703
+        y: 538
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6342ccc271ef795f0800000000000000
+      internalID: -749851437444619210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_39
+      rect:
+        serializedVersion: 2
+        x: 1713
+        y: 488
+        width: 203
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79798e64c74277e70800000000000000
+      internalID: 9112792487191680919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_40
+      rect:
+        serializedVersion: 2
+        x: 1713
+        y: 544
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4550a6bbcd5ffe0a0800000000000000
+      internalID: -6849986179821337260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_41
+      rect:
+        serializedVersion: 2
+        x: 1927
+        y: 510
+        width: 226
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6539c4e1e9572e70800000000000000
+      internalID: 9090333199611540844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_42
+      rect:
+        serializedVersion: 2
+        x: 1994
+        y: 517
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6589be0b2dbdf2a80800000000000000
+      internalID: -8489325074612250538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_43
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 56
+        width: 2172
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: faa89cfb3da494d40800000000000000
+      internalID: 5569064687536540335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_44
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 87
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b61664fa31ae0e7d0800000000000000
+      internalID: -2891053590505954965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_45
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 97
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7105f94ec1946ce30800000000000000
+      internalID: 4523383264183799831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_46
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 114
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15daabc7970e4d220800000000000000
+      internalID: 2509877704740482385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_47
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 103
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a35c7c4dc18bc55c0800000000000000
+      internalID: -4225299916411910854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_48
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 90
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5ff81bf249bb4110800000000000000
+      internalID: 1246293419229773663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_49
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 103
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef5ede62a5ba59140800000000000000
+      internalID: 4725871787683735038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_50
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 97
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98f406760a455f7f0800000000000000
+      internalID: -579463929141375095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_51
+      rect:
+        serializedVersion: 2
+        x: 1834
+        y: 95
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a96d5d8c3689e9d0800000000000000
+      internalID: -2744514903277737565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Sushi Conveyor Belt Slice_52
+      rect:
+        serializedVersion: 2
+        x: 2066
+        y: 126
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fd686560dc508a60800000000000000
+      internalID: 7674235815163620850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Golden Sushi Conveyor Belt Slice_0: 5577115901712349942
+      Golden Sushi Conveyor Belt Slice_1: 1880517973285645159
+      Golden Sushi Conveyor Belt Slice_10: 2913908610537678136
+      Golden Sushi Conveyor Belt Slice_11: -4378926886521676118
+      Golden Sushi Conveyor Belt Slice_12: 886247636633678035
+      Golden Sushi Conveyor Belt Slice_13: -4133952084673440499
+      Golden Sushi Conveyor Belt Slice_14: -589227513129887971
+      Golden Sushi Conveyor Belt Slice_15: 4629478010398096277
+      Golden Sushi Conveyor Belt Slice_16: -824095286687534057
+      Golden Sushi Conveyor Belt Slice_17: 1371215808322253532
+      Golden Sushi Conveyor Belt Slice_18: -4020265010379881438
+      Golden Sushi Conveyor Belt Slice_19: -8042038356588956503
+      Golden Sushi Conveyor Belt Slice_2: -8248927551621153615
+      Golden Sushi Conveyor Belt Slice_20: -5950352831393068048
+      Golden Sushi Conveyor Belt Slice_21: 7335179665101192671
+      Golden Sushi Conveyor Belt Slice_22: 2437670932320202073
+      Golden Sushi Conveyor Belt Slice_23: -7092818119962089569
+      Golden Sushi Conveyor Belt Slice_24: 2934377872019324454
+      Golden Sushi Conveyor Belt Slice_25: 2136852759158935114
+      Golden Sushi Conveyor Belt Slice_26: -7122382399699411625
+      Golden Sushi Conveyor Belt Slice_27: -624112541535113790
+      Golden Sushi Conveyor Belt Slice_28: 1078322727323008711
+      Golden Sushi Conveyor Belt Slice_29: -5095585495385422346
+      Golden Sushi Conveyor Belt Slice_3: -8857715813382132932
+      Golden Sushi Conveyor Belt Slice_30: 7345209987170214855
+      Golden Sushi Conveyor Belt Slice_31: 2209714738991778832
+      Golden Sushi Conveyor Belt Slice_32: -8019839351352986357
+      Golden Sushi Conveyor Belt Slice_33: -7591660521016780586
+      Golden Sushi Conveyor Belt Slice_34: 7587938910892283224
+      Golden Sushi Conveyor Belt Slice_35: -3333689174089624911
+      Golden Sushi Conveyor Belt Slice_36: -8366304891759427470
+      Golden Sushi Conveyor Belt Slice_37: -5560322879861090744
+      Golden Sushi Conveyor Belt Slice_38: -749851437444619210
+      Golden Sushi Conveyor Belt Slice_39: 9112792487191680919
+      Golden Sushi Conveyor Belt Slice_4: -764544612652829686
+      Golden Sushi Conveyor Belt Slice_40: -6849986179821337260
+      Golden Sushi Conveyor Belt Slice_41: 9090333199611540844
+      Golden Sushi Conveyor Belt Slice_42: -8489325074612250538
+      Golden Sushi Conveyor Belt Slice_43: 5569064687536540335
+      Golden Sushi Conveyor Belt Slice_44: -2891053590505954965
+      Golden Sushi Conveyor Belt Slice_45: 4523383264183799831
+      Golden Sushi Conveyor Belt Slice_46: 2509877704740482385
+      Golden Sushi Conveyor Belt Slice_47: -4225299916411910854
+      Golden Sushi Conveyor Belt Slice_48: 1246293419229773663
+      Golden Sushi Conveyor Belt Slice_49: 4725871787683735038
+      Golden Sushi Conveyor Belt Slice_5: 3930556284639120564
+      Golden Sushi Conveyor Belt Slice_50: -579463929141375095
+      Golden Sushi Conveyor Belt Slice_51: -2744514903277737565
+      Golden Sushi Conveyor Belt Slice_52: 7674235815163620850
+      Golden Sushi Conveyor Belt Slice_6: -8483503316987347037
+      Golden Sushi Conveyor Belt Slice_7: -1511354900715445306
+      Golden Sushi Conveyor Belt Slice_8: -264099823910466185
+      Golden Sushi Conveyor Belt Slice_9: -1039830756048095183
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

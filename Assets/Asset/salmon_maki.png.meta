@@ -1,0 +1,689 @@
+fileFormatVersion: 2
+guid: 175ee43d25375ac4aba15386b6a27372
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3328881341403349742
+    second: salmon_maki_0
+  - first:
+      213: 5337730161959750886
+    second: salmon_maki_1
+  - first:
+      213: -3393332456252950789
+    second: salmon_maki_2
+  - first:
+      213: -5556120891642010672
+    second: salmon_maki_3
+  - first:
+      213: -6830164287273419792
+    second: salmon_maki_4
+  - first:
+      213: 1729422409090333065
+    second: salmon_maki_5
+  - first:
+      213: 358843744486828479
+    second: salmon_maki_6
+  - first:
+      213: -8758994556334222059
+    second: salmon_maki_7
+  - first:
+      213: 8317066394918690774
+    second: salmon_maki_8
+  - first:
+      213: -7622848228868537304
+    second: salmon_maki_9
+  - first:
+      213: -5792807248923850901
+    second: salmon_maki_10
+  - first:
+      213: 2900090768286277718
+    second: salmon_maki_11
+  - first:
+      213: 8332611421347766914
+    second: salmon_maki_12
+  - first:
+      213: 2432523394422822690
+    second: salmon_maki_13
+  - first:
+      213: -2944128734052677068
+    second: salmon_maki_14
+  - first:
+      213: -5634486826920011607
+    second: salmon_maki_15
+  - first:
+      213: -6760831906246849329
+    second: salmon_maki_16
+  - first:
+      213: -7134818610575919806
+    second: salmon_maki_17
+  - first:
+      213: -3451834493515601508
+    second: salmon_maki_18
+  - first:
+      213: 5372852210335412120
+    second: salmon_maki_19
+  - first:
+      213: 6592597080503337433
+    second: salmon_maki_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: salmon_maki_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 0
+        width: 1507
+        height: 1008
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee2c5cd51ff823e20800000000000000
+      internalID: 3328881341403349742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 983
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6eccf724d4d631a40800000000000000
+      internalID: 5337730161959750886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_2
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 974
+        width: 34
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf63d341c1678e0d0800000000000000
+      internalID: -3393332456252950789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_3
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 991
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d32d849c71b4e2b0800000000000000
+      internalID: -5556120891642010672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_4
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 991
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fb328bb4c16631a0800000000000000
+      internalID: -6830164287273419792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_5
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 981
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 989fd68a484200810800000000000000
+      internalID: 1729422409090333065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_6
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 969
+        width: 43
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb922000c7edaf400800000000000000
+      internalID: 358843744486828479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_7
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 979
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5155e10bbdcc17680800000000000000
+      internalID: -8758994556334222059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_8
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 973
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6df977a02d72c6370800000000000000
+      internalID: 8317066394918690774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_9
+      rect:
+        serializedVersion: 2
+        x: 1142
+        y: 879
+        width: 105
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82443956ce3363690800000000000000
+      internalID: -7622848228868537304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_10
+      rect:
+        serializedVersion: 2
+        x: 1256
+        y: 982
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b67069baf70db9fa0800000000000000
+      internalID: -5792807248923850901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_11
+      rect:
+        serializedVersion: 2
+        x: 1278
+        y: 988
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 650e71c30313f3820800000000000000
+      internalID: 2900090768286277718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_12
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 981
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 282ebcc80f163a370800000000000000
+      internalID: 8332611421347766914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_13
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 969
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2275660a32f02c120800000000000000
+      internalID: 2432523394422822690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_14
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 966
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43a05c9d38a5427d0800000000000000
+      internalID: -2944128734052677068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_15
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 961
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a890dd65184ec1b0800000000000000
+      internalID: -5634486826920011607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_16
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 909
+        width: 69
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcc8702a333bc22a0800000000000000
+      internalID: -6760831906246849329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_17
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 949
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 245b6cb86480cfc90800000000000000
+      internalID: -7134818610575919806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_18
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 933
+        width: 49
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c99ef8611de9810d0800000000000000
+      internalID: -3451834493515601508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_19
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 967
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89fe6b36e94309a40800000000000000
+      internalID: 5372852210335412120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: salmon_maki_20
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 14
+        width: 103
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d1cdaa9d1c9d7b50800000000000000
+      internalID: 6592597080503337433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      salmon_maki_0: 3328881341403349742
+      salmon_maki_1: 5337730161959750886
+      salmon_maki_10: -5792807248923850901
+      salmon_maki_11: 2900090768286277718
+      salmon_maki_12: 8332611421347766914
+      salmon_maki_13: 2432523394422822690
+      salmon_maki_14: -2944128734052677068
+      salmon_maki_15: -5634486826920011607
+      salmon_maki_16: -6760831906246849329
+      salmon_maki_17: -7134818610575919806
+      salmon_maki_18: -3451834493515601508
+      salmon_maki_19: 5372852210335412120
+      salmon_maki_2: -3393332456252950789
+      salmon_maki_20: 6592597080503337433
+      salmon_maki_3: -5556120891642010672
+      salmon_maki_4: -6830164287273419792
+      salmon_maki_5: 1729422409090333065
+      salmon_maki_6: 358843744486828479
+      salmon_maki_7: -8758994556334222059
+      salmon_maki_8: 8317066394918690774
+      salmon_maki_9: -7622848228868537304
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
