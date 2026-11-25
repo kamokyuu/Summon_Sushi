@@ -39,12 +39,13 @@ namespace CookingCards
         private Canvas canvas;
         private float nextSpawnX;
         private bool spawnInitialized;
+        private float nextTimedSpawn;
         private float Gap=>gapPixels/Mathf.Max(.01f,canvas.scaleFactor);
         public void Configure(Sprite[] normal,Sprite[] broken,TMPro.TMP_Text wallet)
         {normalSprites=normal;brokenSprites=broken;walletLabel=wallet;}
         private void Awake(){rect=(RectTransform)transform;canvas=GetComponentInParent<Canvas>();}
         public static int Price(RecipeGrade grade)=>grade==RecipeGrade.Common?150:grade==RecipeGrade.Uncommon?200:grade==RecipeGrade.Rare?300:350;
-        public static RecipeGrade GradeFromSample(float sample)=>sample<.4f?RecipeGrade.Common:sample<.7f?RecipeGrade.Uncommon:sample<.9f?RecipeGrade.Special:RecipeGrade.Rare;
+        public static RecipeGrade GradeFromSample(float sample)=>ActiveLevel.Config.SamplePlate(sample);
         private void Update()
         {
             if(Menu.GameplayPauseController.IsPaused || CustomerSystem.GameFinished)return;
@@ -62,6 +63,11 @@ namespace CookingCards
                 if(p.anchoredPosition.x<-width*.5f-size*.5f){plates.RemoveAt(i);Destroy(plate.gameObject);}
             }
             // Spawn slots move independently of plate removal: a purchase leaves a real gap.
+            if(!ActiveLevel.Legacy)
+            {
+                if(Time.time>=nextTimedSpawn){SpawnPlate(GradeFromSample(Random.value),width*.5f+size*.5f);nextTimedSpawn=Time.time+ActiveLevel.Config.plateSpawnInterval;}
+                return;
+            }
             if(!spawnInitialized){nextSpawnX=width*.5f-size*.5f;spawnInitialized=true;}
             nextSpawnX-=step;
             if(nextSpawnX<=width*.5f+size*.5f)

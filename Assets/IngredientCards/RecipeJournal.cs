@@ -108,7 +108,7 @@ namespace CookingCards
         public static List<SushiRecipe> RecipesForTab(RecipeJournalTab tab)
         {
             var result=new List<SushiRecipe>();
-            foreach(var recipe in VerticalSliceRecipes.All)
+            foreach(var recipe in ActiveLevel.Recipes)
                 if(tab==RecipeJournalTab.Menu ? recipe.Service==RecipeService.DirectOrder :
                     recipe.Service==RecipeService.Conveyor && (int)recipe.Grade==(int)tab)result.Add(recipe);
             return result;

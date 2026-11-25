@@ -14,6 +14,7 @@ namespace CookingCards
         {
             if(inventory==null || inventory.Length<IngredientRules.Count)
                 throw new System.ArgumentException("Inventory must include all ingredient types.",nameof(inventory));
+            if(ActiveLevel.ScriptedTutorial)return ActiveLevel.TryCookTutorial(inventory,out dish);
             if(inventory[(int)IngredientKind.Rice]>=2)
             {
                 if(inventory[(int)IngredientKind.Salmon]>=3) { inventory[0]-=2;inventory[(int)IngredientKind.Salmon]-=3;dish=DishKind.SalmonNigiri;return true; }

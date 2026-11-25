@@ -77,8 +77,8 @@ namespace CookingCards.Editor
             foreach(var card in hand.GetComponentsInChildren<IngredientCard>())hand.ConsumeCard(card);
             Require(hand.TryReturnCard(IngredientKind.Nori) && hand.TryReturnCard(IngredientKind.Nori),"Missing Garden prefabs.");
             var pair=hand.GetComponentsInChildren<IngredientCard>();
-            Require(hand.TryCombine(pair[0],pair[1]),"Garden merge failed.");
-            Require(hand.TrySplitCard(hand.GetComponentInChildren<IngredientCard>()),"Garden split failed.");
+            Require(!hand.TryCombine(pair[0],pair[1]),"Basic Nori must not merge.");
+            Require(!hand.TrySplitCard(pair[0]),"Basic Nori must not split.");
             foreach(var card in hand.GetComponentsInChildren<IngredientCard>())hand.ConsumeCard(card);
             foreach(var recipe in VerticalSliceRecipes.All)
             {
@@ -96,7 +96,7 @@ namespace CookingCards.Editor
                 Require(box.ReadyRecipe!=null,"Recipe not ready: "+recipe.Id); box.ResetForNewGame();
                 for(int i=0;i<IngredientRules.Count;i++)Require(box.StoredCount((IngredientKind)i)==0,"Ingredients left after summon.");
             }
-            return "PASS: 50 live hand refills; Garden merge/split; all 5 recipes summoned and fully consumed. Reload gameplay after this destructive playtest.";
+            return "PASS: 50 live hand refills; basic Nori merge/split rejected; legacy recipe deposits validated. Reload gameplay after this destructive playtest.";
         }
     }
 }

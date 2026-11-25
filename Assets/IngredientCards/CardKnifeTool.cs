@@ -9,7 +9,7 @@ namespace CookingCards
         private void Start()
         {
             var tool=EnsureTool();
-            tool.gameObject.SetActive(!PreparationSession.Tutorial || PreparationSession.KnifeTutorial || PreparationSession.BossTutorial);
+            tool.gameObject.SetActive(ActiveLevel.KnifeEnabled && (!ActiveLevel.ScriptedTutorial || PreparationSession.KnifeTutorial || PreparationSession.BossTutorial));
         }
 
         public KnifeDragHandle EnsureTool()

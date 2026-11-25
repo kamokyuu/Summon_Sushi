@@ -4,8 +4,8 @@ namespace CookingCards
     {
         public static bool CanAdd(int[] inventory, IngredientKind kind)
         {
-            if(inventory==null || inventory.Length!=IngredientRules.Count || !GameJamRules.Allows(kind))return false;
-            foreach(var recipe in VerticalSliceRecipes.All)
+            if(inventory==null || inventory.Length!=IngredientRules.Count || !ActiveLevel.Config.Allows(kind))return false;
+            foreach(var recipe in ActiveLevel.Recipes)
             {
                 bool possible=true;
                 for(int i=0;i<inventory.Length;i++)
@@ -16,7 +16,7 @@ namespace CookingCards
         }
         public static bool TryCook(int[] inventory,out SushiRecipe recipe)
         {
-            recipe=VerticalSliceRecipes.Match(inventory);
+            recipe=ActiveLevel.Match(inventory);
             if(recipe==null)return false;
             foreach(var item in recipe.Ingredients)inventory[(int)item.Kind]-=item.Count;
             return true;

@@ -27,9 +27,23 @@ namespace CookingCards
             for(int i=0;i<normalBossOrders.Length;i++)normalBossOrders[i]=Random.value<.5f?DishKind.EbiNigiri:DishKind.MaguroNigiri;
         }
         public static void PrepareUnified(){EnsureOrders();SelectTutorial(false);}
-        public static void BeginVerticalSlice() => ResetSession();
+        public static void BeginVerticalSlice()
+        {
+            ResetSession();
+            var legacy=Resources.Load<LevelConfig>("Levels/LegacyDefault");
+            if(legacy==null)throw new System.InvalidOperationException("Legacy regression config missing.");
+            ActiveLevel.Select(legacy,"Explicit legacy regression entry");
+        }
+        public static void BeginBeginnerLevel()
+        {
+            ResetSession();
+            var level=Resources.Load<LevelConfig>("Levels/Level01");
+            if(level==null)throw new System.InvalidOperationException("Level01 missing; beginner entry cannot use legacy balance.");
+            ActiveLevel.Select(level,"Normal beginner entry");
+        }
         public static void Begin()
         {
+            ActiveLevel.Select(null); // Tutorial entry explicitly selects legacy scripted compatibility.
             if(TutorialPhase==0)
             {
                 TutorialTotals.Reset();
@@ -43,7 +57,7 @@ namespace CookingCards
         }
         private static void Add(IngredientKind kind,int count){for(int i=0;i<count;i++)supplies.Add(kind);}
         public static void AdvancePhase(){if(TutorialPhase==0)SelectTutorial(true);else SelectBoss();Begin();}
-        public static void Replay(){if(!Tutorial){BeginVerticalSlice();return;}KnifeTutorial=false;BossTutorial=false;TutorialTotals.Reset();deck.Clear();deck.AddRange(startingDeck);supplies.Clear();Yen=startingYen;}
+        public static void Replay(){if(!Tutorial){var level=ActiveLevel.Config;ResetSession();ActiveLevel.Select(level,"Replay");return;}KnifeTutorial=false;BossTutorial=false;TutorialTotals.Reset();deck.Clear();deck.AddRange(startingDeck);supplies.Clear();Yen=startingYen;}
         public static bool TryDraw(out IngredientKind kind){kind=default;if(deck.Count==0)return false;int index=deck.Count-1;kind=deck[index];deck.RemoveAt(index);return true;}
         public static void Reward(int amount){Yen+=amount;}
         public static void CarryRemaining(IngredientCardHand hand,IngredientStove box)

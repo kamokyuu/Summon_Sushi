@@ -7,15 +7,18 @@ namespace CookingCards.Menu
     {
         public void Show()
         {
-            if(transform.Find("ResultsNavigation")!=null){Bind();return;}
+            if(transform.Find("ResultsNavigation")!=null){Bind();RefreshNextLabel();return;}
             var root=new GameObject("ResultsNavigation",typeof(RectTransform));root.transform.SetParent(transform,false);
             var r=(RectTransform)root.transform;r.anchorMin=r.anchorMax=new Vector2(.5f,.5f);r.anchoredPosition=new Vector2(0,-255);r.sizeDelta=new Vector2(1000,60);
             Make(root.transform,"MAIN MENU",-180,"MainMenu");Make(root.transform,"REPLAY",180,"MainScene");
             Bind();
+            RefreshNextLabel();
         }
         private void Awake(){Bind();}
         public void GoMainMenu(){Time.timeScale=1;SceneManager.LoadScene("MainMenu");}
-        public void Replay(){PreparationSession.Replay();Time.timeScale=1;SceneManager.LoadScene("MainScene");}
+        private bool CanAdvance=>DayShiftController.Active!=null&&DayShiftController.Active.HasEnded&&DayShiftController.Active.Won&&ActiveLevel.Config.nextLevel!=null;
+        private void RefreshNextLabel(){var label=transform.Find("ResultsNavigation/REPLAY").GetComponentInChildren<TMPro.TMP_Text>();if(label!=null)label.text=CanAdvance?"NEXT LEVEL":"REPLAY";}
+        public void Replay(){if(CanAdvance){var next=ActiveLevel.Config.nextLevel;PreparationSession.BeginBeginnerLevel();ActiveLevel.Select(next,"Next level results");}else PreparationSession.Replay();Time.timeScale=1;SceneManager.LoadScene("MainScene");}
         private void Bind()
         {
             var root=transform.Find("ResultsNavigation");if(root==null)return;

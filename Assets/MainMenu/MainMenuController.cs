@@ -14,7 +14,7 @@ namespace CookingCards.Menu
             if (index == 0) { PlayLevelOne(); return; }
             for (int i = 0; i < panels.Length; i++) panels[i].SetActive(i == index);
         }
-        public void PlayLevelOne() { PreparationSession.BeginVerticalSlice(); Time.timeScale = 1; SceneManager.LoadScene(gameplayScene); }
+        public void PlayLevelOne() { PreparationSession.BeginBeginnerLevel(); Time.timeScale = 1; SceneManager.LoadScene(gameplayScene); }
         public void SetVolume(float value) => GameSettings.Volume = value;
         public void SetFullscreen(bool value) => GameSettings.Fullscreen = value;
         private void OnDisable() => GameSettings.Save();

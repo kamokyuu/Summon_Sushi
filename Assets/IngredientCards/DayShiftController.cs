@@ -21,6 +21,7 @@ namespace CookingCards
         public void Configure(GameObject panel,TMPro.TMP_Text text)
         {
             resultPanel=panel;resultText=text;belt=Object.FindFirstObjectByType<ConveyorController>();hand=Object.FindFirstObjectByType<IngredientCardHand>();
+            if(!ActiveLevel.Legacy){durationSeconds=ActiveLevel.Config.durationSeconds;targetYen=ActiveLevel.Config.targetYen;Remaining=durationSeconds;}
             if(hud!=null){hud.transform.parent.gameObject.SetActive(true);Refresh();return;}
             var canvas=GetComponentInParent<Canvas>();
             var go=new GameObject("DayShiftHUD",typeof(RectTransform),typeof(TMPro.TextMeshProUGUI));go.transform.SetParent(canvas.transform,false);
@@ -45,12 +46,13 @@ namespace CookingCards
         }
         private void Refresh()
         {
-            if(hud!=null && belt!=null)hud.text="DAY 1   "+(Mathf.CeilToInt(Remaining)/60).ToString("00")+":"+(Mathf.CeilToInt(Remaining)%60).ToString("00")+"\nNET ¥"+(belt.Revenue-belt.Penalties)+" / ¥"+targetYen;
+            if(hud!=null && belt!=null)hud.text=LevelTitle+"   "+(Mathf.CeilToInt(Remaining)/60).ToString("00")+":"+(Mathf.CeilToInt(Remaining)%60).ToString("00")+"\nNET ¥"+(belt.Revenue-belt.Penalties)+" / ¥"+targetYen;
         }
+        private string LevelTitle=>ActiveLevel.Legacy?"DAY 1":ActiveLevel.Config.name.ToUpperInvariant();
         private void Finish()
         {
             HasEnded=true;
-            if(resultText!=null)resultText.text="<size=36><b>DAY 1 "+(Won?"COMPLETE":"FAILED")+"</b></size>\n\nSales: ¥"+belt.Revenue+"\nBroken plate penalties: -¥"+belt.Penalties+"\nNet: ¥"+(belt.Revenue-belt.Penalties)+" / ¥"+targetYen+"\n\nSushi sold: "+belt.PurchasedCount+"\nBroken plates: "+belt.MissedCount;
+            if(resultText!=null)resultText.text="<size=36><b>"+LevelTitle+" "+(Won?"COMPLETE":"FAILED")+"</b></size>\n\nSales: ¥"+belt.Revenue+"\nBroken plate penalties: -¥"+belt.Penalties+"\nNet: ¥"+(belt.Revenue-belt.Penalties)+" / ¥"+targetYen+"\n\nSushi sold: "+belt.PurchasedCount+"\nBroken plates: "+belt.MissedCount;
             if(resultPanel!=null){resultPanel.SetActive(true);resultPanel.transform.SetAsLastSibling();var nav=resultPanel.GetComponent<Menu.ResultsNavigation>()??resultPanel.AddComponent<Menu.ResultsNavigation>();nav.Show();}
         }
     }

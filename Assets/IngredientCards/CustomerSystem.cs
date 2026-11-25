@@ -70,6 +70,8 @@ namespace CookingCards
         }
         public NpcCustomer SpawnCustomer()
         {
+            if(!ActiveLevel.Legacy && PreparationSession.Tutorial)return null; // New levels use the conveyor, not scripted tutorial orders.
+            if(PreparationSession.BossTutorial && !ActiveLevel.Config.bossCustomersEnabled)return null;
             if(PreparationSession.BossTutorial && spawned>=1+GluttonRules.NormalCustomers)return null;
             if(PreparationSession.Tutorial && !PreparationSession.BossTutorial && spawned>=3) return null;
             if (HasEnded || customers.Count >= Mathf.Clamp(maximumCustomers, 1, 3) || characterSprites == null || characterSprites.Length == 0) return null;

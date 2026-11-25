@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9786051b34a6cb64ca99cd81f26150cd, type: 3}
+  m_Name: Level02
+  m_EditorClassIdentifier: Assembly-CSharp::CookingCards.LevelConfig
+  legacyCompatibility: 0
+  activeRecipes:
+  - id: ebi_nigiri
+    displayName: Ebi Nigiri
+    grade: 0
+    family: 0
+    tutorialDish: 0
+    demandWeight: 1
+    ingredients:
+    - ingredient: 0
+      count: 1
+    - ingredient: 8
+      count: 1
+  - id: tamago_nigiri
+    displayName: Tamago Nigiri
+    grade: 0
+    family: 0
+    tutorialDish: 0
+    demandWeight: 1
+    ingredients:
+    - ingredient: 0
+      count: 1
+    - ingredient: 2
+      count: 1
+  - id: avocado_maki
+    displayName: Avocado Maki
+    grade: 1
+    family: 1
+    tutorialDish: 0
+    demandWeight: 1
+    ingredients:
+    - ingredient: 0
+      count: 1
+    - ingredient: 1
+      count: 1
+    - ingredient: 3
+      count: 1
+  - id: maguro_nigiri
+    displayName: Maguro Nigiri
+    grade: 1
+    family: 0
+    tutorialDish: 0
+    demandWeight: 1
+    ingredients:
+    - ingredient: 0
+      count: 1
+    - ingredient: 9
+      count: 1
+  tutorialRecipes: []
+  activeIngredients: 000000000800000002000000010000000300000009000000
+  ingredientWeights: []
+  ingredientBalanceVersion: 2
+  verticalSliceBatchVersion: 1
+  plateWeights:
+  - grade: 0
+    weight: 2
+  - grade: 1
+    weight: 2
+  initialHandSize: 5
+  maximumHandCapacity: 7
+  drawInterval: 0.25
+  drawMode: 3
+  shuffleBagSize: 20
+  manualDrawCooldownSeconds: 3
+  exchangeEnabled: 1
+  exchangeCooldownSeconds: 3
+  nextLevel: {fileID: 11400000, guid: 4044c4d572bfa7444a2ce973ea55659f, type: 2}
+  durationSeconds: 210
+  targetYen: 1200
+  plateSpawnInterval: 9
+  initialKnifeCharges: 0
+  mergeEnabled: 0
+  knifeEnabled: 0
+  comboEnabled: 0
+  powerUpsEnabled: 0
+  bossCustomersEnabled: 0

@@ -8,15 +8,16 @@ namespace CookingCards
         [SerializeField] private IngredientCardHand hand;
         [SerializeField] private TMPro.TMP_Text label;
         private int uses=3;
+        private void Awake(){uses=ActiveLevel.Config.initialKnifeCharges;}
         private Vector2 home;
         private bool dragging;
         [SerializeField] private bool tintWhenEmpty;
         [SerializeField] private Color emptyTint=Color.gray;
         public void Configure(IngredientCardHand owner,TMPro.TMP_Text text) { hand=owner;label=text;Refresh(); }
-        private void Refresh() { if(label!=null)label.text="KNIFE\n"+uses+" / 3";if(tintWhenEmpty && uses<=0)GetComponent<UnityEngine.UI.Image>().color=emptyTint; }
+        private void Refresh() { if(label!=null)label.text="KNIFE\n"+uses+" / "+ActiveLevel.Config.initialKnifeCharges;if(tintWhenEmpty && uses<=0)GetComponent<UnityEngine.UI.Image>().color=emptyTint; }
         public void OnBeginDrag(PointerEventData e)
         {
-            if(e.button!=PointerEventData.InputButton.Left || uses<=0 || Menu.GameplayPauseController.IsPaused || CustomerSystem.GameFinished || hand.IsDealing)return;
+            if(!ActiveLevel.KnifeEnabled || e.button!=PointerEventData.InputButton.Left || uses<=0 || Menu.GameplayPauseController.IsPaused || CustomerSystem.GameFinished || hand.IsDealing)return;
             home=((RectTransform)transform).anchoredPosition;dragging=true;GetComponent<CanvasGroup>().blocksRaycasts=false;transform.SetAsLastSibling();
         }
         public void OnDrag(PointerEventData e)

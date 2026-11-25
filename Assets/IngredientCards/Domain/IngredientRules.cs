@@ -29,8 +29,6 @@ namespace CookingCards
             if(first!=second) return false;
             switch(first)
             {
-                case IngredientKind.Rice: result=IngredientKind.Nori; return true;
-                case IngredientKind.Nori: result=IngredientKind.Avocado; return true;
                 case IngredientKind.Eggs: result=IngredientKind.Tobiko; return true;
                 case IngredientKind.Tobiko: result=IngredientKind.Ikura; return true;
                 case IngredientKind.Shrimp: result=IngredientKind.Tuna; return true;

@@ -23,7 +23,7 @@ namespace CookingCards
             (GetComponent<SummonControls>()??gameObject.AddComponent<SummonControls>()).Configure(this);
         }
         public SushiRecipe ReadyRecipe
-        {get{for(int grade=3;grade>=0;grade--)foreach(var r in VerticalSliceRecipes.Conveyor((RecipeGrade)grade))if(CanMake(r))return r;return null;}}
+        {get{for(int grade=3;grade>=0;grade--)foreach(var r in ActiveLevel.Conveyor((RecipeGrade)grade))if(CanMake(r))return r;return null;}}
         private bool CanMake(SushiRecipe recipe)
         {foreach(var amount in recipe.Ingredients)if(ingredients[(int)amount.Kind]<amount.Count)return false;return true;}
         private void Update()
@@ -38,7 +38,7 @@ namespace CookingCards
             bool served=false;
             // Higher grades first when several dishes can use the same stock.
             for(int grade=3;grade>=0;grade--)
-                foreach(var recipe in VerticalSliceRecipes.Conveyor((RecipeGrade)grade))
+                foreach(var recipe in ActiveLevel.Conveyor((RecipeGrade)grade))
                     while(CanMake(recipe) && belt.TryServeLeftmost(recipe))
                     {
                         foreach(var item in recipe.Ingredients)ingredients[(int)item.Kind]-=item.Count;
@@ -114,7 +114,7 @@ namespace CookingCards
             if (hand == null || dishesLayer == null || (PreparationSession.Tutorial && (tamagoNigiri == null || salmonMaki == null || salmonNigiri == null)) ||
                 card == null || !card.isActiveAndEnabled) return false;
             var kind = card.Ingredient;
-            if(!PreparationSession.Tutorial && !GameJamRules.Allows(kind))return false;
+            if(!PreparationSession.Tutorial && !ActiveLevel.Config.Allows(kind))return false;
             if (!hand.ConsumeCard(card)) return false;
             ingredients[(int)kind]++;
             if(PreparationSession.Tutorial)CookAvailableRecipes();

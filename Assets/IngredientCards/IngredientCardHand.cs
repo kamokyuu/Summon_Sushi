@@ -22,9 +22,37 @@ namespace CookingCards
         private readonly List<RectTransform> drawOrder = new List<RectTransform>();
         private readonly List<IngredientKind> freeDrawBag = new List<IngredientKind>();
         public const int HandLimit = 7;
-        private int CurrentHandLimit => HandLimit;
+        private int CurrentHandLimit => ActiveLevel.Config.maximumHandCapacity;
+        private float EffectiveDrawInterval=>ActiveLevel.Legacy?openingDealInterval:ActiveLevel.Config.drawInterval;
+        private float nextAllowedDraw;
+        private float nextExchange;
+        [SerializeField] private UnityEngine.UI.Button exchangeButton;
+        [SerializeField] private TMPro.TMP_Text drawCooldownLabel;
+        public void ConfigureExchange(UnityEngine.UI.Button button,TMPro.TMP_Text label){exchangeButton=button;drawCooldownLabel=label;}
+        public bool CanExchange=>ActiveLevel.Config.exchangeEnabled && !IsDealing && !Menu.GameplayPauseController.IsPaused && !CustomerSystem.GameFinished && cards.Count==CurrentHandLimit && Time.time>=nextExchange;
+        public void ExchangeSelectedCard()=>TryExchangeSelectedCard();
+        public bool TryExchangeSelectedCard()
+        {
+            if(!CanExchange)return false;
+            IngredientCard selected=null;foreach(var rect in cards)if(rect.GetComponent<IngredientCard>().IsSelected){selected=rect.GetComponent<IngredientCard>();break;}
+            if(selected==null)return false;
+            var stock=new int[IngredientRules.Count];var box=Object.FindFirstObjectByType<IngredientStove>();
+            for(int i=0;i<stock.Length;i++)stock[i]=box!=null?box.StoredCount((IngredientKind)i):0;
+            foreach(var rect in cards)if(rect.gameObject!=selected.gameObject)stock[(int)rect.GetComponent<IngredientCard>().Ingredient]++;
+            int bestMissing=int.MaxValue;IngredientKind? replacement=null;
+            foreach(var recipe in ActiveLevel.Recipes)
+            {
+                int missing=0;IngredientKind? candidate=null;
+                foreach(var amount in recipe.Ingredients){int gap=Mathf.Max(0,amount.Count-stock[(int)amount.Kind]);missing+=gap;if(gap>0&&candidate==null)candidate=amount.Kind;}
+                if(candidate.HasValue&&missing<bestMissing){bestMissing=missing;replacement=candidate;}
+            }
+            if(replacement.HasValue&&System.Array.Find(cardPrefabs,p=>p!=null&&p.Ingredient==replacement.Value)==null)return false;
+            ConsumeCard(selected);SpawnRandomCard(replacement);
+            nextExchange=Time.time+ActiveLevel.Config.exchangeCooldownSeconds;
+            nextAllowedDraw=Mathf.Max(nextAllowedDraw,nextExchange);PlayPaperFlip();return true;
+        }
         public int CardCount => cards.Count;
-        public bool CanDraw => TutorialGuide.CanDraw && !Menu.GameplayPauseController.IsPaused && !CustomerSystem.GameFinished && !IsDealing && CardCount < CurrentHandLimit && (!PreparationSession.Tutorial || PreparationSession.Remaining>0);
+        public bool CanDraw => (ActiveLevel.Legacy || Time.time>=nextAllowedDraw) && (!ActiveLevel.ScriptedTutorial || TutorialGuide.CanDraw) && !Menu.GameplayPauseController.IsPaused && !CustomerSystem.GameFinished && !IsDealing && CardCount < CurrentHandLimit && (!ActiveLevel.ScriptedTutorial || PreparationSession.Remaining>0);
         public bool IsCollapsed { get; private set; }
         public bool IsDealing { get; private set; }
         public bool IsAutoArrange { get; private set; }
@@ -34,6 +62,8 @@ namespace CookingCards
             if (drawPile == null) return;
             var button = drawPile.GetComponent<UnityEngine.UI.Button>();
             if (button != null) button.interactable = CanDraw;
+            if(exchangeButton!=null)exchangeButton.interactable=CanExchange;
+            if(drawCooldownLabel!=null)drawCooldownLabel.text=CardCount>=CurrentHandLimit?"FULL":Time.time<nextAllowedDraw?Mathf.CeilToInt(nextAllowedDraw-Time.time)+"s":"";
         }
 
         public void ConfigureArrangeLabel(TMPro.TMP_Text label)
@@ -121,12 +151,12 @@ namespace CookingCards
             Canvas.ForceUpdateCanvases();
             // No cards exist until their individual deal starts.
             yield return new WaitForSecondsRealtime(openingDealDelay);
-            for (int i = 0; i < (PreparationSession.Tutorial ? Mathf.Min(!PreparationSession.BossTutorial?2:startingCardCount, HandLimit) : HandLimit); i++)
+            for (int i = 0; i < (ActiveLevel.ScriptedTutorial ? Mathf.Min(!PreparationSession.BossTutorial?2:startingCardCount,CurrentHandLimit) : Mathf.Min(ActiveLevel.Config.initialHandSize,CurrentHandLimit)); i++)
             {
                 int before = cards.Count;
                 SpawnRandomCard();
                 if (cards.Count > before) PlayPaperFlip();
-                yield return new WaitForSecondsRealtime(openingDealInterval);
+                yield return new WaitForSecondsRealtime(EffectiveDrawInterval);
             }
             yield return new WaitForSecondsRealtime(.65f);
             IsDealing = false;
@@ -174,29 +204,31 @@ namespace CookingCards
         public void DrawCard()
         {
             if (!CanDraw) return;
+            if(!ActiveLevel.Legacy)nextAllowedDraw=Time.time+ActiveLevel.Config.manualDrawCooldownSeconds;
             SpawnRandomCard();
             TutorialGuide.Drew();
         }
 
-        private void SpawnRandomCard()
+        private void SpawnRandomCard(IngredientKind? forced=null)
         {
             if (CustomerSystem.GameFinished) return;
             if (cards.Count >= CurrentHandLimit || cardPrefabs == null || cardPrefabs.Length == 0) return;
             // Sampling with replacement means drawing never empties the pile.
             IngredientCard prefab;
-            if(PreparationSession.Tutorial)
+            if(forced.HasValue)prefab=System.Array.Find(cardPrefabs,p=>p!=null&&p.Ingredient==forced.Value);
+            else if(ActiveLevel.ScriptedTutorial)
             {
                 if(!PreparationSession.TryDraw(out var kind)) return;
                 prefab=System.Array.Find(cardPrefabs,p=>p!=null && p.Ingredient==kind);
             }
             else
             {
-                foreach(var active in GameJamRules.Ingredients)
+                foreach(var active in ActiveLevel.Config.activeIngredients)
                     if(System.Array.Find(cardPrefabs,p=>p!=null && p.Ingredient==active)==null)
                     { Debug.LogError("Missing active ingredient prefab: "+active,this); return; }
                 if(freeDrawBag.Count==0)
                 {
-                    freeDrawBag.AddRange(GameJamRules.CreateDrawBatch());
+                    freeDrawBag.AddRange(ActiveLevel.DrawBatch());
                 }
                 int index=freeDrawBag.Count-1;var kind=freeDrawBag[index];
                 prefab=System.Array.Find(cardPrefabs,p=>p!=null && p.Ingredient==kind);
@@ -244,7 +276,9 @@ namespace CookingCards
 
         public bool TrySplitCard(IngredientCard card)
         {
+            if(!ActiveLevel.KnifeEnabled)return false;
             if(Menu.GameplayPauseController.IsPaused || CustomerSystem.GameFinished || IsDealing || IsCollapsed || cards.Count>=CurrentHandLimit || card==null || !cards.Contains((RectTransform)card.transform) || !IngredientRules.TrySplit(card.Ingredient,out var result)) return false;
+            if(!ActiveLevel.Legacy && !ActiveLevel.Config.Allows(result))return false;
             var prefab=System.Array.Find(cardPrefabs,p=>p!=null && p.Ingredient==result);
             if(prefab==null)return false;
             var position=card.transform.position;
@@ -261,6 +295,7 @@ namespace CookingCards
 
         public bool TryCombine(IngredientCard source, IngredientCard target)
         {
+            if(!ActiveLevel.MergeEnabled)return false;
             if(Menu.GameplayPauseController.IsPaused || CustomerSystem.GameFinished || IsDealing)return false;
             if (source == null || target == null || source == target || !source.isActiveAndEnabled || !target.isActiveAndEnabled)
                 return false;
@@ -268,6 +303,7 @@ namespace CookingCards
             var targetRect = (RectTransform)target.transform;
             if (!cards.Contains(sourceRect) || !cards.Contains(targetRect) ||
                 !TryGetCombination(source.Ingredient, target.Ingredient, out var result)) return false;
+            if(!ActiveLevel.Legacy && !ActiveLevel.Config.Allows(result))return false;
             IngredientCard resultPrefab = null;
             if (cardPrefabs != null)
                 foreach (var prefab in cardPrefabs)
@@ -304,7 +340,7 @@ namespace CookingCards
             return true;
         }
 
-        private void LateUpdate() { if (!CustomerSystem.GameFinished) Arrange(false); }
+        private void LateUpdate() { if (!CustomerSystem.GameFinished) {Arrange(false);RefreshDrawButton();} }
 
         private void Arrange(bool instant)
         {

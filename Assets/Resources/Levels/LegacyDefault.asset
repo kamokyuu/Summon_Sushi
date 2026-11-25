@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9786051b34a6cb64ca99cd81f26150cd, type: 3}
+  m_Name: LegacyDefault
+  m_EditorClassIdentifier: Assembly-CSharp::CookingCards.LevelConfig
+  legacyCompatibility: 1
+  activeRecipes:
+  - id: ebi_nigiri
+    displayName: Ebi Nigiri
+    grade: 0
+    family: 0
+    tutorialDish: 0
+    ingredients:
+    - ingredient: 8
+      count: 1
+    - ingredient: 0
+      count: 2
+  - id: avocado_maki
+    displayName: Avocado Maki
+    grade: 1
+    family: 1
+    tutorialDish: 0
+    ingredients:
+    - ingredient: 3
+      count: 1
+    - ingredient: 1
+      count: 1
+    - ingredient: 0
+      count: 1
+  - id: tuna_avocado_maki
+    displayName: Tuna Avocado Maki
+    grade: 2
+    family: 1
+    tutorialDish: 0
+    ingredients:
+    - ingredient: 9
+      count: 1
+    - ingredient: 3
+      count: 1
+    - ingredient: 1
+      count: 1
+    - ingredient: 0
+      count: 1
+  - id: salmon_nigiri
+    displayName: Salmon Nigiri
+    grade: 3
+    family: 0
+    tutorialDish: 0
+    ingredients:
+    - ingredient: 4
+      count: 3
+    - ingredient: 0
+      count: 1
+  - id: salmon_sashimi
+    displayName: Salmon Sashimi
+    grade: 3
+    family: 4
+    tutorialDish: 0
+    ingredients:
+    - ingredient: 4
+      count: 2
+  tutorialRecipes:
+  - id: salmon_nigiri
+    displayName: Salmon Nigiri
+    grade: 3
+    family: 0
+    tutorialDish: 2
+    ingredients:
+    - ingredient: 0
+      count: 2
+    - ingredient: 4
+      count: 3
+  - id: maguro_nigiri
+    displayName: Maguro Nigiri
+    grade: 2
+    family: 0
+    tutorialDish: 4
+    ingredients:
+    - ingredient: 0
+      count: 2
+    - ingredient: 9
+      count: 2
+  - id: ebi_nigiri
+    displayName: Ebi Nigiri
+    grade: 0
+    family: 0
+    tutorialDish: 3
+    ingredients:
+    - ingredient: 0
+      count: 2
+    - ingredient: 8
+      count: 1
+  activeIngredients: 000000000100000003000000080000000900000004000000
+  ingredientWeights:
+  - ingredient: 0
+    weight: 5
+  - ingredient: 1
+    weight: 2
+  - ingredient: 3
+    weight: 2
+  - ingredient: 8
+    weight: 1
+  - ingredient: 9
+    weight: 1
+  - ingredient: 4
+    weight: 5
+  ingredientBalanceVersion: 2
+  plateWeights:
+  - grade: 0
+    weight: 0.4
+  - grade: 1
+    weight: 0.3
+  - grade: 3
+    weight: 0.2
+  - grade: 2
+    weight: 0.1
+  initialHandSize: 7
+  maximumHandCapacity: 7
+  drawInterval: 0.25
+  drawMode: 2
+  plateSpawnInterval: 5
+  initialKnifeCharges: 3
+  mergeEnabled: 1
+  knifeEnabled: 1
+  comboEnabled: 0
+  powerUpsEnabled: 0
+  bossCustomersEnabled: 1
