@@ -54,6 +54,8 @@ namespace CookingCards
         [HideInInspector] public int verticalSliceBatchVersion;
         [HideInInspector] public int batchBVersion;
         [HideInInspector] public int batchCVersion;
+        [HideInInspector] public int batchDVersion;
+        [Min(.1f)] public float conveyorSpeedMultiplier=1;
         [Min(.1f)] public float riceDemandMultiplier=1,noriDemandMultiplier=1,premiumDemandMultiplier=1;
         public LevelGuideStep[] guidedSteps;
         public RecipeFoodVisual[] foodVisuals;

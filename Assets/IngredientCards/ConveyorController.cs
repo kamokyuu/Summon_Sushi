@@ -8,8 +8,14 @@ namespace CookingCards
         [SerializeField] private Sprite[] normalSprites, brokenSprites;
         [SerializeField] private Sprite[] foodSprites = new Sprite[4];
         [SerializeField,Range(.2f,1.5f)] private float foodScale=.8f;
-        public Sprite FoodSprite(RecipeGrade grade)=>foodSprites!=null && (int)grade<foodSprites.Length?foodSprites[(int)grade]:null;
-        public float FoodScale=>foodScale;
+        public Sprite FoodSprite(SushiRecipe recipe)
+        {
+            var visual=System.Array.Find(ActiveLevel.Config.foodVisuals??System.Array.Empty<RecipeFoodVisual>(),v=>v.recipeId==recipe.Id);
+            var sprite=visual?.sprite;
+            if(sprite!=null&&recipe.Id!="salmon_nigiri"&&sprite.name.Replace(" ","").Replace("_","").ToLowerInvariant().Contains("salmonnigiri"))return null;
+            return sprite;
+        }
+        public float FoodScale=>Mathf.Clamp(foodScale,.2f,.9f);
         [SerializeField] private Vector2 plateSize=new Vector2(145,110);
         [SerializeField, Tooltip("Vertical position of moving plates relative to the conveyor center. Positive moves up; negative moves down.")]
         private float plateVerticalOffset;
@@ -41,6 +47,22 @@ namespace CookingCards
         private bool spawnInitialized;
         private float nextTimedSpawn;
         private float Gap=>gapPixels/Mathf.Max(.01f,canvas.scaleFactor);
+        public float EffectiveSpeed=>speedPixelsPerSecond*(ActiveLevel.Legacy?1:ActiveLevel.Config.conveyorSpeedMultiplier)/Mathf.Max(.01f,canvas.scaleFactor);
+        public float MinimumPlateSpacing=>Mathf.Max(10,plateSize.x)+(ActiveLevel.Legacy?Gap:Mathf.Max(8/Mathf.Max(.01f,canvas.scaleFactor),Mathf.Min(Gap,EffectiveSpeed*ActiveLevel.Config.plateSpawnInterval-Mathf.Max(10,plateSize.x))));
+        private bool SlotFree(float x)
+        {foreach(var plate in plates)if(Mathf.Abs(((RectTransform)plate.transform).anchoredPosition.x-x)<MinimumPlateSpacing-.01f)return false;return true;}
+        private float FreeSlot(float requested)
+        {
+            if(SlotFree(requested))return requested;
+            float best=float.PositiveInfinity,distance=float.PositiveInfinity;bool entering=requested>=rect.rect.width*.5f;
+            foreach(var plate in plates)for(int side=-1;side<=1;side+=2)
+            {
+                float candidate=((RectTransform)plate.transform).anchoredPosition.x+side*MinimumPlateSpacing;
+                if(entering&&candidate<requested||!SlotFree(candidate))continue;
+                float delta=Mathf.Abs(candidate-requested);if(delta<distance){best=candidate;distance=delta;}
+            }
+            return best;
+        }
         public void Configure(Sprite[] normal,Sprite[] broken,TMPro.TMP_Text wallet)
         {normalSprites=normal;brokenSprites=broken;walletLabel=wallet;}
         private void Awake(){rect=(RectTransform)transform;canvas=GetComponentInParent<Canvas>();if((ActiveLevel.Config.comboEnabled||ActiveLevel.Config.powerUpsEnabled||ActiveLevel.Config.bossCustomersEnabled)&&GetComponent<ComboShopBoss>()==null)gameObject.AddComponent<ComboShopBoss>();}
@@ -52,7 +74,7 @@ namespace CookingCards
             if(GuidedLevelTutorial.Protecting||ComboShopBoss.ConveyorStopped)return;
             if(Menu.GameplayPauseController.IsPaused || CustomerSystem.GameFinished)return;
             float width=rect.rect.width;
-            float step=speedPixelsPerSecond/Mathf.Max(.01f,canvas.scaleFactor)*Time.deltaTime;
+            float step=EffectiveSpeed*Time.deltaTime;
             float size=Mathf.Max(10,plateSize.x);
             for(int i=plates.Count-1;i>=0;i--)
             {
@@ -67,7 +89,7 @@ namespace CookingCards
             // Spawn slots move independently of plate removal: a purchase leaves a real gap.
             if(!ActiveLevel.Legacy)
             {
-                if(Time.time>=nextTimedSpawn){SpawnPlate(GradeFromSample(Random.value),width*.5f+size*.5f);nextTimedSpawn=Time.time+ActiveLevel.Config.plateSpawnInterval;}
+                if(Time.time>=nextTimedSpawn&&SlotFree(width*.5f+size*.5f)){SpawnPlate(GradeFromSample(Random.value),width*.5f+size*.5f);nextTimedSpawn=Time.time+ActiveLevel.Config.plateSpawnInterval;}
                 return;
             }
             if(!spawnInitialized){nextSpawnX=width*.5f-size*.5f;spawnInitialized=true;}
@@ -77,7 +99,8 @@ namespace CookingCards
         }
         public ConveyorPlate SpawnPlate(RecipeGrade grade,float x)
         {
-            var go=new GameObject(grade+"Plate",typeof(RectTransform),typeof(UnityEngine.UI.Image),typeof(ConveyorPlate));go.transform.SetParent(transform,false);
+            x=FreeSlot(x);
+            var go=new GameObject(grade+"Plate",typeof(RectTransform),typeof(UnityEngine.UI.Image),typeof(UnityEngine.UI.RectMask2D),typeof(ConveyorPlate));go.transform.SetParent(transform,false);
             var r=(RectTransform)go.transform;r.anchorMin=r.anchorMax=new Vector2(.5f,.5f);r.sizeDelta=plateSize;r.anchoredPosition=new Vector2(x,plateVerticalOffset);
             var plate=go.GetComponent<ConveyorPlate>();plate.Configure(this,grade,normalSprites[(int)grade],brokenSprites[(int)grade]);plates.Add(plate);return plate;
         }

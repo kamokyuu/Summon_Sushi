@@ -19,7 +19,7 @@ MonoBehaviour:
     grade: 0
     family: 0
     tutorialDish: 0
-    demandWeight: 1
+    demandWeight: 1.5
     ingredients:
     - ingredient: 0
       count: 1
@@ -30,7 +30,7 @@ MonoBehaviour:
     grade: 0
     family: 0
     tutorialDish: 0
-    demandWeight: 1
+    demandWeight: 0.5
     ingredients:
     - ingredient: 0
       count: 1
@@ -67,6 +67,8 @@ MonoBehaviour:
   verticalSliceBatchVersion: 1
   batchBVersion: 1
   batchCVersion: 1
+  batchDVersion: 1
+  conveyorSpeedMultiplier: 1.2
   riceDemandMultiplier: 1.35
   noriDemandMultiplier: 2
   premiumDemandMultiplier: 0.65
@@ -78,12 +80,8 @@ MonoBehaviour:
     sprite: {fileID: -1158443415730992199, guid: 7d4bdf336d6f51844a700f5faf997eae, type: 3}
   - recipeId: avocado_maki
     sprite: {fileID: 21300000, guid: 8edaa710648dc8e4db5a2977458aa9a6, type: 3}
-  - recipeId: salmon_nigiri
-    sprite: {fileID: 21300000, guid: ca84423a0e60b804fb78978cdf8a7267, type: 3}
-  - recipeId: salmon_sashimi
+  - recipeId: maguro_nigiri
     sprite: {fileID: 0}
-  - recipeId: salmon_maki
-    sprite: {fileID: 3328881341403349742, guid: 175ee43d25375ac4aba15386b6a27372, type: 3}
   finishOnTarget: 1
   powerUps:
   - title: Extra Hand
@@ -117,7 +115,7 @@ MonoBehaviour:
   nextLevel: {fileID: 11400000, guid: 4044c4d572bfa7444a2ce973ea55659f, type: 2}
   durationSeconds: 90
   targetYen: 1260
-  plateSpawnInterval: 9
+  plateSpawnInterval: 8.099999
   initialKnifeCharges: 0
   mergeEnabled: 1
   knifeEnabled: 0

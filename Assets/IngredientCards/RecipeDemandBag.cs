@@ -8,11 +8,19 @@ namespace CookingCards
         public static List<IngredientKind> Build(LevelConfig level)
         {
             var weights=new Dictionary<IngredientKind,float>();
-            foreach(var entry in level.activeRecipes)foreach(var amount in entry.ingredients)
+            foreach(var entry in level.activeRecipes)
             {
-                if(!level.Allows(amount.ingredient))throw new InvalidOperationException("Inactive recipe ingredient.");
-                if(!weights.ContainsKey(amount.ingredient))weights[amount.ingredient]=0;
-                weights[amount.ingredient]+=amount.count*entry.demandWeight;
+                float plateWeight=0,gradeDemand=0;
+                foreach(var plate in level.plateWeights)if(plate.grade==entry.grade)plateWeight+=Mathf.Max(0,plate.weight);
+                foreach(var recipe in level.activeRecipes)if(recipe.grade==entry.grade)gradeDemand+=recipe.demandWeight;
+                if(plateWeight<=0)continue;
+                float share=plateWeight*entry.demandWeight/gradeDemand;
+                foreach(var amount in entry.ingredients)
+                {
+                    if(!level.Allows(amount.ingredient))throw new InvalidOperationException("Inactive recipe ingredient.");
+                    if(!weights.ContainsKey(amount.ingredient))weights[amount.ingredient]=0;
+                    weights[amount.ingredient]+=amount.count*share;
+                }
             }
             if(weights.Count==0||level.shuffleBagSize<weights.Count)throw new InvalidOperationException("Bag must fit every demanded ingredient.");
             foreach(var kind in new List<IngredientKind>(weights.Keys))

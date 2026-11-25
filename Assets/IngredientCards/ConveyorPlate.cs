@@ -21,8 +21,7 @@ namespace CookingCards
             SaleMultiplier=ComboShopBoss.Active!=null?ComboShopBoss.Active.RecordFill():1;
             GuidedLevelTutorial.Notify(LevelGuideStep.Summon,recipe);
             GuidedLevelTutorial.Notify(LevelGuideStep.PlateMatch,recipe);
-            var visual=System.Array.Find(ActiveLevel.Config.foodVisuals??System.Array.Empty<RecipeFoodVisual>(),v=>v.recipeId==recipe.Id);
-            var sprite=visual?.sprite;
+            var sprite=owner.FoodSprite(recipe);
             if(sprite!=null)
             {
                 var food=new GameObject("ServedFood",typeof(RectTransform),typeof(UnityEngine.UI.Image));food.transform.SetParent(transform,false);
@@ -32,7 +31,7 @@ namespace CookingCards
                 return true;
             }
             var background=new GameObject("RecipePlaceholder",typeof(RectTransform),typeof(UnityEngine.UI.Image));background.transform.SetParent(transform,false);
-            var br=(RectTransform)background.transform;br.sizeDelta=new Vector2(125,65);background.GetComponent<UnityEngine.UI.Image>().color=new Color(.18f,.23f,.25f);background.GetComponent<UnityEngine.UI.Image>().raycastTarget=false;
+            var br=(RectTransform)background.transform;br.anchorMin=new Vector2(.1f,.15f);br.anchorMax=new Vector2(.9f,.85f);br.sizeDelta=Vector2.zero;background.GetComponent<UnityEngine.UI.Image>().color=new Color(.18f,.23f,.25f);background.GetComponent<UnityEngine.UI.Image>().raycastTarget=false;
             var go=new GameObject("ServedRecipe",typeof(RectTransform),typeof(TMPro.TextMeshProUGUI));go.transform.SetParent(background.transform,false);
             var rect=(RectTransform)go.transform;rect.anchorMin=Vector2.zero;rect.anchorMax=Vector2.one;rect.offsetMin=new Vector2(6,6);rect.offsetMax=new Vector2(-6,-6);
             var text=go.GetComponent<TMPro.TextMeshProUGUI>();text.font=TMPro.TMP_Settings.defaultFontAsset;text.text=recipe.DisplayName;text.enableAutoSizing=true;text.fontSizeMin=10;text.fontSizeMax=17;text.color=Color.white;text.outlineWidth=.3f;text.outlineColor=Color.black;text.alignment=TMPro.TextAlignmentOptions.Center;text.raycastTarget=false;
