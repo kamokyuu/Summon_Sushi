@@ -14,7 +14,7 @@ namespace CookingCards.Editor
             foreach(var config in Resources.LoadAll<LevelConfig>("Levels"))Require(config.manualDrawCooldownSeconds==0,"Nonzero cooldown.");
             for(int level=1;level<=3;level++)
             {
-                PreparationSession.BeginBeginnerLevel();ActiveLevel.Select(Resources.Load<LevelConfig>("Levels/Level0"+level));SceneManager.LoadScene("MainScene");
+                PreparationSession.BeginBeginnerLevel();var fixture=UnityEngine.Object.Instantiate(Resources.Load<LevelConfig>("Levels/Level0"+level));fixture.comboEnabled=fixture.powerUpsEnabled=fixture.bossCustomersEnabled=false;ActiveLevel.Select(fixture);SceneManager.LoadScene("MainScene");
                 await WaitForDeal();
                 var hand=UnityEngine.Object.FindFirstObjectByType<IngredientCardHand>();var guide=GuidedLevelTutorial.Active;
                 Require(!hand.IsDealing&&guide.IsGuiding,"Guide did not start.");
@@ -35,7 +35,8 @@ namespace CookingCards.Editor
                     var journal=UnityEngine.Object.FindFirstObjectByType<RecipeJournal>();journal.Toggle();Require(guide.Current==LevelGuideStep.PlateMatch,"Journal did not advance.");journal.Toggle();
                     var recipe=ActiveLevel.Recipes.First(r=>r.Grade==RecipeGrade.Uncommon);
                     Require(!belt.SpawnPlate(RecipeGrade.Common,0).TryServe(recipe)&&guide.IsGuiding,"Wrong plate accepted.");
-                    Cook(hand,belt,recipe);Require(!guide.IsGuiding,"Matching plate did not finish tutorial.");
+                    Cook(hand,belt,recipe);Require(guide.Current==LevelGuideStep.Merge,"Matching plate did not advance tutorial.");
+                    var basics=hand.GetComponentsInChildren<IngredientCard>().Where(c=>c.Ingredient==IngredientKind.Rice).Take(2).ToArray();Require(hand.TryCombine(basics[0],basics[1])&&!guide.IsGuiding,"Level02 merge step failed.");
                     var placeholder=UnityEngine.Object.FindObjectsByType<TMPro.TMP_Text>(FindObjectsSortMode.None).FirstOrDefault(t=>t.gameObject.name=="ServedRecipe");
                     // Avocado Maki uses its existing sprite; Maguro below must have an honest named fallback.
                     var fallback=ActiveLevel.Recipes.First(r=>r.Id=="maguro_nigiri");var plate=belt.SpawnPlate(fallback.Grade,0);Require(plate.TryServe(fallback),"Fallback serve failed.");
@@ -46,10 +47,10 @@ namespace CookingCards.Editor
                 else
                 {
                     Require(guide.Current==LevelGuideStep.Merge&&knife.Charges==2&&knife.MaximumCharges==2,"Level03 knife setup failed.");
-                    var pair=hand.GetComponentsInChildren<IngredientCard>().Where(c=>c.Ingredient==IngredientKind.Shrimp).Take(2).ToArray();Require(pair.Length==2&&hand.TryCombine(pair[0],pair[1]),"Guided merge failed.");
+                    var pair=hand.GetComponentsInChildren<IngredientCard>().Where(c=>c.Ingredient==IngredientKind.Rice).Take(2).ToArray();Require(pair.Length==2&&hand.TryCombine(pair[0],pair[1]),"Guided merge failed.");
                     Require(guide.Current==LevelGuideStep.Knife,"Merge did not advance.");
                     Require(!knife.TryUse(null)&&knife.Charges==2,"Invalid cut consumed charge.");
-                    var tuna=hand.GetComponentsInChildren<IngredientCard>().First(c=>c.Ingredient==IngredientKind.Tuna);Require(knife.TryUse(tuna)&&knife.Charges==1&&!guide.IsGuiding,"Guided cut failed.");
+                    var tuna=hand.GetComponentsInChildren<IngredientCard>().First(c=>c.Ingredient==IngredientKind.Nori);Require(knife.TryUse(tuna)&&knife.Charges==1&&!guide.IsGuiding,"Guided cut failed.");
                     foreach(var card in hand.GetComponentsInChildren<IngredientCard>())hand.ConsumeCard(card);
                     hand.TryReturnCard(IngredientKind.Tuna);tuna=hand.GetComponentsInChildren<IngredientCard>().First();Require(knife.TryUse(tuna)&&knife.Charges==0,"Second cut failed.");
                     hand.TryReturnCard(IngredientKind.Tuna);Require(!knife.TryUse(hand.GetComponentsInChildren<IngredientCard>().First(c=>c.Ingredient==IngredientKind.Tuna))&&knife.Charges==0,"Knife exceeded two charges.");

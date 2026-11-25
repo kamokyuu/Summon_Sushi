@@ -5,6 +5,12 @@ using UnityEngine;
 namespace CookingCards
 {
     public enum LevelGuideStep { Draw, Summon, Serve, Journal, PlateMatch, Merge, Knife }
+    public enum PowerUpEffect { ExtraHand, KnifeRefill, ConveyorFreeze, PlateShield, LuckyDraw }
+    [Serializable] public sealed class LevelPowerUp
+    {
+        public string title,description;
+        public PowerUpEffect effect;
+    }
     [Serializable] public sealed class RecipeFoodVisual {public string recipeId;public Sprite sprite;}
     public enum IngredientDrawMode { LegacyWeightedBag=0, UniformActiveIngredients=1, WeightedActiveIngredients=2, RecipeDemandShuffleBag=3 }
     [Serializable] public sealed class IngredientDrawWeight { public IngredientKind ingredient; [Min(0)] public float weight=1; }
@@ -47,9 +53,12 @@ namespace CookingCards
         [HideInInspector] public int ingredientBalanceVersion;
         [HideInInspector] public int verticalSliceBatchVersion;
         [HideInInspector] public int batchBVersion;
+        [HideInInspector] public int batchCVersion;
+        [Min(.1f)] public float riceDemandMultiplier=1,noriDemandMultiplier=1,premiumDemandMultiplier=1;
         public LevelGuideStep[] guidedSteps;
         public RecipeFoodVisual[] foodVisuals;
         public bool finishOnTarget;
+        public LevelPowerUp[] powerUps;
         public PlateSpawnWeight[] plateWeights;
         [Min(0)] public int initialHandSize=7;
         [Min(1)] public int maximumHandCapacity=7;

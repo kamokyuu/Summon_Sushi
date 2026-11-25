@@ -43,12 +43,13 @@ namespace CookingCards
         private float Gap=>gapPixels/Mathf.Max(.01f,canvas.scaleFactor);
         public void Configure(Sprite[] normal,Sprite[] broken,TMPro.TMP_Text wallet)
         {normalSprites=normal;brokenSprites=broken;walletLabel=wallet;}
-        private void Awake(){rect=(RectTransform)transform;canvas=GetComponentInParent<Canvas>();}
+        private void Awake(){rect=(RectTransform)transform;canvas=GetComponentInParent<Canvas>();if((ActiveLevel.Config.comboEnabled||ActiveLevel.Config.powerUpsEnabled||ActiveLevel.Config.bossCustomersEnabled)&&GetComponent<ComboShopBoss>()==null)gameObject.AddComponent<ComboShopBoss>();}
+        public void RefreshWallet(){if(walletLabel!=null)walletLabel.text="¥ "+PreparationSession.Yen;}
         public static int Price(RecipeGrade grade)=>grade==RecipeGrade.Common?120:grade==RecipeGrade.Uncommon?180:grade==RecipeGrade.Rare?260:400;
         public static RecipeGrade GradeFromSample(float sample)=>ActiveLevel.Config.SamplePlate(sample);
         private void Update()
         {
-            if(GuidedLevelTutorial.Protecting)return;
+            if(GuidedLevelTutorial.Protecting||ComboShopBoss.ConveyorStopped)return;
             if(Menu.GameplayPauseController.IsPaused || CustomerSystem.GameFinished)return;
             float width=rect.rect.width;
             float step=speedPixelsPerSecond/Mathf.Max(.01f,canvas.scaleFactor)*Time.deltaTime;
@@ -83,7 +84,7 @@ namespace CookingCards
         public void RecordServed(RecipeGrade grade){ServedCount++;}
         public int BuyAvailable(int limit)
         {
-            if(Menu.GameplayPauseController.IsPaused || CustomerSystem.GameFinished)return 0;
+            if(ComboShopBoss.Selecting||Menu.GameplayPauseController.IsPaused || CustomerSystem.GameFinished)return 0;
             var stock=new List<ConveyorPlate>();
             foreach(var p in plates)if(p.ServedRecipe!=null && !p.IsBroken && Mathf.Abs(((RectTransform)p.transform).anchoredPosition.x)<=rect.rect.width*.5f)stock.Add(p);
             stock.Sort((a,b)=>a.transform.position.x.CompareTo(b.transform.position.x));
@@ -91,7 +92,8 @@ namespace CookingCards
             foreach(var p in stock)
             {
                 if(bought>=Mathf.Clamp(limit,1,3))break;
-                int price=Price(p.Grade);Revenue+=price;PurchasedCount++;PreparationSession.Reward(price);
+                int price=Mathf.RoundToInt(Price(p.Grade)*p.SaleMultiplier);Revenue+=price;PurchasedCount++;PreparationSession.Reward(price);
+                ComboShopBoss.Active?.RecordPurchase(p.ServedRecipe);
                 GuidedLevelTutorial.Notify(LevelGuideStep.Serve,p.ServedRecipe);
                 CustomerSystem.Active?.RecordConveyorPurchase(price);
                 if(walletLabel!=null)walletLabel.text="¥ "+PreparationSession.Yen;
@@ -103,8 +105,9 @@ namespace CookingCards
         {get{foreach(var p in plates)if(p.ServedRecipe!=null && !p.IsBroken && Mathf.Abs(((RectTransform)p.transform).anchoredPosition.x)<=rect.rect.width*.5f)return true;return false;}}
         public void RecordMissed(RecipeGrade grade)
         {
-            if(GuidedLevelTutorial.Protecting)return;
+            if(GuidedLevelTutorial.Protecting||ComboShopBoss.ConveyorStopped)return;
             if(CustomerSystem.GameFinished)return;
+            ComboShopBoss.Active?.Missed();
             MissedCount++;int penalty=BreakPenalty(grade);Penalties+=penalty;PreparationSession.Reward(-penalty);
             CustomerSystem.Active?.RecordConveyorPurchase(-penalty);
             if(walletLabel!=null)walletLabel.text="¥ "+PreparationSession.Yen;

@@ -15,12 +15,12 @@ namespace CookingCards.Editor
             LevelConfig copy=null;
             try
             {
-                foreach(var basic in new[]{IngredientKind.Rice,IngredientKind.Nori,IngredientKind.Cucumber,IngredientKind.Avocado})
+                foreach(var basic in new[]{IngredientKind.Cucumber})
                 {
                     Require(!IngredientRules.TrySplit(basic,out _),basic+" must not split.");
                     for(int i=0;i<IngredientRules.Count;i++)Require(!IngredientRules.TryMerge(basic,(IngredientKind)i,out _),basic+" must not merge.");
                 }
-                foreach(var pair in new[]{new[]{IngredientKind.Shrimp,IngredientKind.Tuna},new[]{IngredientKind.Tuna,IngredientKind.Salmon},new[]{IngredientKind.Eggs,IngredientKind.Tobiko},new[]{IngredientKind.Tobiko,IngredientKind.Ikura}})
+                foreach(var pair in new[]{new[]{IngredientKind.Rice,IngredientKind.Nori},new[]{IngredientKind.Nori,IngredientKind.Avocado},new[]{IngredientKind.Shrimp,IngredientKind.Tuna},new[]{IngredientKind.Tuna,IngredientKind.Salmon},new[]{IngredientKind.Eggs,IngredientKind.Tobiko},new[]{IngredientKind.Tobiko,IngredientKind.Ikura}})
                 {
                     Require(IngredientRules.TryMerge(pair[0],pair[0],out var higher)&&higher==pair[1],"Merge chain broken.");
                     Require(IngredientRules.TrySplit(pair[1],out var lower)&&lower==pair[0],"Knife chain broken.");

@@ -14,6 +14,7 @@ namespace CookingCards
         public void Configure(Sprite[] sprites){portraits=sprites;belt=Object.FindFirstObjectByType<ConveyorController>();}
         private void Update()
         {
+            if(ComboShopBoss.Selecting)return;
             if(Menu.GameplayPauseController.IsPaused || CustomerSystem.GameFinished || visitorActive || belt==null || Time.time<nextArrival || !belt.HasAvailableFood)return;
             CustomerCount++;visitorActive=true;
             var go=new GameObject("ConveyorCustomer_"+CustomerCount,typeof(RectTransform),typeof(UnityEngine.UI.Image),typeof(ConveyorCustomerVisit));go.transform.SetParent(transform,false);

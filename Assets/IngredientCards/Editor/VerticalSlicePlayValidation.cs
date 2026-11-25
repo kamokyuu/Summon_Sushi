@@ -81,7 +81,7 @@ namespace CookingCards.Editor
         private static async Task WaitForHand()
         {
             await Task.Delay(500);
-            for(int i=0;i<80;i++){var hand=UnityEngine.Object.FindFirstObjectByType<IngredientCardHand>();if(hand!=null&&!hand.IsDealing){GuidedLevelTutorial.Active?.Skip();return;}await Task.Delay(100);}
+            for(int i=0;i<80;i++){var hand=UnityEngine.Object.FindFirstObjectByType<IngredientCardHand>();if(hand!=null&&!hand.IsDealing){var fixture=UnityEngine.Object.Instantiate(ActiveLevel.Config);fixture.name=ActiveLevel.Config.name;fixture.comboEnabled=fixture.powerUpsEnabled=fixture.bossCustomersEnabled=false;ActiveLevel.Select(fixture,"Core regression fixture");GuidedLevelTutorial.Active?.Skip();return;}await Task.Delay(100);}
             throw new Exception("Opening deal timed out.");
         }
         private static void Require(bool condition,string message){if(!condition)throw new Exception(message);}

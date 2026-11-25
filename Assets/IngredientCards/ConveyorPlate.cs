@@ -7,6 +7,8 @@ namespace CookingCards
         public RecipeGrade Grade { get; private set; }
         public bool IsBroken { get; private set; }
         public SushiRecipe ServedRecipe { get; private set; }
+        public float SaleMultiplier {get;private set;}=1;
+        private bool shielded;
         private ConveyorController owner;
         private UnityEngine.UI.Image image;
         private Sprite brokenSprite;
@@ -14,8 +16,9 @@ namespace CookingCards
         {owner=belt;Grade=grade;brokenSprite=broken;image=GetComponent<UnityEngine.UI.Image>();image.sprite=normal;image.preserveAspect=true;}
         public bool TryServe(SushiRecipe recipe)
         {
-            if(CustomerSystem.GameFinished || Menu.GameplayPauseController.IsPaused || IsBroken || ServedRecipe!=null || recipe==null || recipe.Service!=RecipeService.Conveyor || recipe.Grade!=Grade)return false;
+            if(ComboShopBoss.Selecting||CustomerSystem.GameFinished || Menu.GameplayPauseController.IsPaused || IsBroken || ServedRecipe!=null || recipe==null || recipe.Service!=RecipeService.Conveyor || recipe.Grade!=Grade)return false;
             ServedRecipe=recipe;owner.RecordServed(Grade);
+            SaleMultiplier=ComboShopBoss.Active!=null?ComboShopBoss.Active.RecordFill():1;
             GuidedLevelTutorial.Notify(LevelGuideStep.Summon,recipe);
             GuidedLevelTutorial.Notify(LevelGuideStep.PlateMatch,recipe);
             var visual=System.Array.Find(ActiveLevel.Config.foodVisuals??System.Array.Empty<RecipeFoodVisual>(),v=>v.recipeId==recipe.Id);
@@ -36,7 +39,11 @@ namespace CookingCards
             return true;
         }
         public void BreakIfEmpty()
-        {if(GuidedLevelTutorial.Protecting || CustomerSystem.GameFinished || IsBroken || ServedRecipe!=null)return;IsBroken=true;image.sprite=brokenSprite;owner.RecordMissed(Grade);}
+        {
+            if(GuidedLevelTutorial.Protecting||ComboShopBoss.ConveyorStopped||shielded||CustomerSystem.GameFinished||IsBroken||ServedRecipe!=null)return;
+            if(ComboShopBoss.Active!=null&&ComboShopBoss.Active.TryShieldMiss()){shielded=true;return;}
+            IsBroken=true;image.sprite=brokenSprite;owner.RecordMissed(Grade);
+        }
         public void OnDrop(PointerEventData data)
         {if(data.pointerDrag!=null)data.pointerDrag.GetComponent<CookedDish>()?.TryServeOn(this);}
     }

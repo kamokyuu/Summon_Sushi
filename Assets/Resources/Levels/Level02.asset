@@ -66,7 +66,11 @@ MonoBehaviour:
   ingredientBalanceVersion: 2
   verticalSliceBatchVersion: 1
   batchBVersion: 1
-  guidedSteps: 0300000004000000
+  batchCVersion: 1
+  riceDemandMultiplier: 1.35
+  noriDemandMultiplier: 2
+  premiumDemandMultiplier: 0.65
+  guidedSteps: 030000000400000005000000
   foodVisuals:
   - recipeId: ebi_nigiri
     sprite: {fileID: 21300000, guid: b693d03f5e0d78f4da03f1651133f592, type: 3}
@@ -81,6 +85,22 @@ MonoBehaviour:
   - recipeId: salmon_maki
     sprite: {fileID: 3328881341403349742, guid: 175ee43d25375ac4aba15386b6a27372, type: 3}
   finishOnTarget: 1
+  powerUps:
+  - title: Extra Hand
+    description: +1 hand slot for this shift
+    effect: 0
+  - title: Knife Refill
+    description: Restore 1 spent knife charge
+    effect: 1
+  - title: Conveyor Freeze
+    description: Freeze conveyor for 30 seconds
+    effect: 2
+  - title: Plate Shield
+    description: Protect the next missed plate
+    effect: 3
+  - title: Lucky Draw
+    description: Choose 3 identical allowed cards; needs 3 free slots
+    effect: 4
   plateWeights:
   - grade: 0
     weight: 2
@@ -99,8 +119,8 @@ MonoBehaviour:
   targetYen: 1260
   plateSpawnInterval: 9
   initialKnifeCharges: 0
-  mergeEnabled: 0
+  mergeEnabled: 1
   knifeEnabled: 0
-  comboEnabled: 0
-  powerUpsEnabled: 0
+  comboEnabled: 1
+  powerUpsEnabled: 1
   bossCustomersEnabled: 0

@@ -14,7 +14,7 @@ namespace CookingCards
         public void ConfigureDisplay(TMPro.TMP_Text display){hud=display;}
         public float Remaining {get;private set;}
         public bool HasEnded {get;private set;}
-        public bool Won=>belt!=null && belt.Revenue-belt.Penalties>=targetYen;
+        public bool Won=>belt!=null && belt.Revenue-belt.Penalties>=targetYen&&(!ActiveLevel.Config.bossCustomersEnabled||ComboShopBoss.Active!=null&&ComboShopBoss.Active.BossComplete);
         public int TargetYen=>targetYen;
         private void Awake(){Active=this;Remaining=durationSeconds;}
         private void OnDestroy(){if(Active==this)Active=null;}
@@ -41,8 +41,12 @@ namespace CookingCards
         private void Update(){Advance(Time.deltaTime);}
         public void Advance(float seconds)
         {
-            if(HasEnded || GuidedLevelTutorial.Protecting || Menu.GameplayPauseController.IsPaused || hand==null || hand.IsDealing || belt==null)return;
+            if(HasEnded || GuidedLevelTutorial.Protecting || ComboShopBoss.Selecting || Menu.GameplayPauseController.IsPaused || hand==null || hand.IsDealing || belt==null)return;
+            var feature=ComboShopBoss.Active;
+            feature?.CheckBoss(belt.Revenue-belt.Penalties>=targetYen);
+            if(feature!=null&&feature.BossFailed){Finish();return;}
             if(ActiveLevel.Config.finishOnTarget&&Won){Finish();return;}
+            if(feature!=null&&feature.BossStarted&&!feature.BossComplete)return;
             Remaining=Mathf.Max(0,Remaining-Mathf.Max(0,seconds));Refresh();if(Remaining<=0)Finish();
         }
         private void Refresh()
@@ -54,6 +58,7 @@ namespace CookingCards
         {
             HasEnded=true;
             if(resultText!=null)resultText.text="<size=36><b>"+LevelTitle+" "+(Won?"COMPLETE":"FAILED")+"</b></size>\n\nSales: ¥"+belt.Revenue+"\nBroken plate penalties: -¥"+belt.Penalties+"\nNet: ¥"+(belt.Revenue-belt.Penalties)+" / ¥"+targetYen+"\n\nSushi sold: "+belt.PurchasedCount+"\nBroken plates: "+belt.MissedCount;
+            if(resultText!=null&&ComboShopBoss.Active!=null){resultText.text+=ComboShopBoss.Active.Results();resultText.enableAutoSizing=true;resultText.fontSizeMin=12;resultText.fontSizeMax=25;}
             if(resultPanel!=null){resultPanel.SetActive(true);resultPanel.transform.SetAsLastSibling();var nav=resultPanel.GetComponent<Menu.ResultsNavigation>()??resultPanel.AddComponent<Menu.ResultsNavigation>();nav.Show();}
         }
     }

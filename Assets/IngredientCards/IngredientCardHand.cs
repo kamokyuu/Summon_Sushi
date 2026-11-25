@@ -22,7 +22,13 @@ namespace CookingCards
         private readonly List<RectTransform> drawOrder = new List<RectTransform>();
         private readonly List<IngredientKind> freeDrawBag = new List<IngredientKind>();
         public const int HandLimit = 7;
-        private int CurrentHandLimit => ActiveLevel.Config.maximumHandCapacity;
+        private int CurrentHandLimit => Capacity;
+        public int Capacity=>ActiveLevel.Config.maximumHandCapacity+(ComboShopBoss.Active!=null?ComboShopBoss.Active.ExtraHandSlots:0);
+        public bool TryGiveCards(IngredientKind kind,int count)
+        {
+            if(count<1||IsDealing||CustomerSystem.GameFinished||CardCount+count>Capacity||!ActiveLevel.Config.Allows(kind)||System.Array.Find(cardPrefabs,p=>p!=null&&p.Ingredient==kind)==null)return false;
+            for(int i=0;i<count;i++)TryReturnCard(kind);return true;
+        }
         private float EffectiveDrawInterval=>ActiveLevel.Legacy?openingDealInterval:ActiveLevel.Config.drawInterval;
         private float nextAllowedDraw;
         private RectTransform drawingCard;

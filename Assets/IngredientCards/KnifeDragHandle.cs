@@ -10,6 +10,11 @@ namespace CookingCards
         private int uses=3;
         public int Charges=>uses;
         public int MaximumCharges=>ActiveLevel.Legacy?ActiveLevel.Config.initialKnifeCharges:2;
+        public bool Refill(int amount)
+        {
+            if(!ActiveLevel.KnifeEnabled||amount<=0||uses>=MaximumCharges)return false;
+            uses=Mathf.Min(MaximumCharges,uses+amount);Refresh();return true;
+        }
         private void Awake(){uses=Mathf.Clamp(ActiveLevel.Config.initialKnifeCharges,0,MaximumCharges);}
         public bool TryUse(IngredientCard card)
         {

@@ -15,6 +15,12 @@ namespace CookingCards
                 weights[amount.ingredient]+=amount.count*entry.demandWeight;
             }
             if(weights.Count==0||level.shuffleBagSize<weights.Count)throw new InvalidOperationException("Bag must fit every demanded ingredient.");
+            foreach(var kind in new List<IngredientKind>(weights.Keys))
+            {
+                float bias=kind==IngredientKind.Rice?level.riceDemandMultiplier:kind==IngredientKind.Nori?level.noriDemandMultiplier:kind==IngredientKind.Avocado||kind==IngredientKind.Tuna||kind==IngredientKind.Salmon?level.premiumDemandMultiplier:1;
+                if(bias<=0||float.IsNaN(bias)||float.IsInfinity(bias))throw new InvalidOperationException("Invalid demand multiplier.");
+                weights[kind]*=bias;
+            }
             float total=0;foreach(var w in weights.Values)total+=w;
             if(total<=0)throw new InvalidOperationException("Recipes need positive demand weights.");
             var counts=new Dictionary<IngredientKind,int>();foreach(var kind in weights.Keys)counts[kind]=1;
