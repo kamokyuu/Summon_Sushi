@@ -66,6 +66,7 @@ namespace CookingCards
         {
             if(Menu.GameplayPauseController.IsPaused || CustomerSystem.GameFinished)return;
             binderPanel.SetActive(!binderPanel.activeSelf);
+            if(binderPanel.activeSelf)GuidedLevelTutorial.Notify(LevelGuideStep.Journal);
         }
         public void ShowTab(int index)
         {

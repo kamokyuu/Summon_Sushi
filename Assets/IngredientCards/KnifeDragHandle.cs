@@ -8,13 +8,20 @@ namespace CookingCards
         [SerializeField] private IngredientCardHand hand;
         [SerializeField] private TMPro.TMP_Text label;
         private int uses=3;
-        private void Awake(){uses=ActiveLevel.Config.initialKnifeCharges;}
+        public int Charges=>uses;
+        public int MaximumCharges=>ActiveLevel.Legacy?ActiveLevel.Config.initialKnifeCharges:2;
+        private void Awake(){uses=Mathf.Clamp(ActiveLevel.Config.initialKnifeCharges,0,MaximumCharges);}
+        public bool TryUse(IngredientCard card)
+        {
+            if(!ActiveLevel.KnifeEnabled||uses<=0||hand==null||!hand.TrySplitCard(card))return false;
+            uses--;Refresh();GuidedLevelTutorial.Notify(LevelGuideStep.Knife);return true;
+        }
         private Vector2 home;
         private bool dragging;
         [SerializeField] private bool tintWhenEmpty;
         [SerializeField] private Color emptyTint=Color.gray;
         public void Configure(IngredientCardHand owner,TMPro.TMP_Text text) { hand=owner;label=text;Refresh(); }
-        private void Refresh() { if(label!=null)label.text="KNIFE\n"+uses+" / "+ActiveLevel.Config.initialKnifeCharges;if(tintWhenEmpty && uses<=0)GetComponent<UnityEngine.UI.Image>().color=emptyTint; }
+        private void Refresh() { if(label!=null)label.text="KNIFE\n"+uses+" / "+MaximumCharges;if(tintWhenEmpty && uses<=0)GetComponent<UnityEngine.UI.Image>().color=emptyTint; }
         public void OnBeginDrag(PointerEventData e)
         {
             if(!ActiveLevel.KnifeEnabled || e.button!=PointerEventData.InputButton.Left || uses<=0 || Menu.GameplayPauseController.IsPaused || CustomerSystem.GameFinished || hand.IsDealing)return;
@@ -32,7 +39,7 @@ namespace CookingCards
             foreach(var hit in hits)
             {
                 var card=hit.gameObject.GetComponentInParent<IngredientCard>();
-                if(card!=null) { if(hand.TrySplitCard(card))uses--;break; }
+                if(card!=null) { TryUse(card);break; }
             }
             dragging=false;((RectTransform)transform).anchoredPosition=home;GetComponent<CanvasGroup>().blocksRaycasts=true;Refresh();
         }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace CookingCards
 {
+    public enum LevelGuideStep { Draw, Summon, Serve, Journal, PlateMatch, Merge, Knife }
+    [Serializable] public sealed class RecipeFoodVisual {public string recipeId;public Sprite sprite;}
     public enum IngredientDrawMode { LegacyWeightedBag=0, UniformActiveIngredients=1, WeightedActiveIngredients=2, RecipeDemandShuffleBag=3 }
     [Serializable] public sealed class IngredientDrawWeight { public IngredientKind ingredient; [Min(0)] public float weight=1; }
     [Serializable] public sealed class LevelIngredientAmount { public IngredientKind ingredient; [Min(1)] public int count=1; }
@@ -44,6 +46,10 @@ namespace CookingCards
         public IngredientDrawWeight[] ingredientWeights;
         [HideInInspector] public int ingredientBalanceVersion;
         [HideInInspector] public int verticalSliceBatchVersion;
+        [HideInInspector] public int batchBVersion;
+        public LevelGuideStep[] guidedSteps;
+        public RecipeFoodVisual[] foodVisuals;
+        public bool finishOnTarget;
         public PlateSpawnWeight[] plateWeights;
         [Min(0)] public int initialHandSize=7;
         [Min(1)] public int maximumHandCapacity=7;
@@ -52,7 +58,7 @@ namespace CookingCards
         public IngredientDrawMode drawMode;
         [Tooltip("Each bag contains every demanded ingredient at least once; larger bags improve weight precision.")]
         [Min(1)] public int shuffleBagSize=20;
-        [Min(0)] public float manualDrawCooldownSeconds=3;
+        [Min(0)] public float manualDrawCooldownSeconds;
         public bool exchangeEnabled;
         [Min(.1f)] public float exchangeCooldownSeconds=3;
         public LevelConfig nextLevel;

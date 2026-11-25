@@ -84,7 +84,7 @@ namespace CookingCards.Editor
             {
                 var config=Resources.Load<LevelConfig>("Levels/Level0"+n);config.ValidateConfiguration();if(config.Recipes.Count!=n*2)throw new System.Exception("Wrong recipe count.");
                 for(int bag=0;bag<100;bag++){var cards=RecipeDemandBag.Build(config);if(cards.Count!=20)throw new System.Exception("Bag size mismatch.");foreach(var recipe in config.Recipes)foreach(var amount in recipe.Ingredients)if(!cards.Contains(amount.Kind))throw new System.Exception("Missing resource in bag.");foreach(var kind in cards)if(!config.Allows(kind))throw new System.Exception("Inactive draw.");}
-                if(config.manualDrawCooldownSeconds!=3||config.plateWeights.Length!=n||config.mergeEnabled!=(n==3)||config.knifeEnabled!=(n==3))throw new System.Exception("Wrong level features.");
+                if(config.manualDrawCooldownSeconds!=0||config.plateWeights.Length!=n||config.mergeEnabled!=(n==3)||config.knifeEnabled!=(n==3))throw new System.Exception("Wrong level features.");
                 foreach(var recipe in config.Recipes){var stock=new int[IngredientRules.Count];foreach(var item in recipe.Ingredients)stock[(int)item.Kind]=item.Count;if(!recipe.MatchesExactly(stock))throw new System.Exception("Recipe mismatch.");}
             }
             if(Resources.Load<LevelConfig>("Levels/Level01").nextLevel.name!="Level02"||Resources.Load<LevelConfig>("Levels/Level02").nextLevel.name!="Level03")throw new System.Exception("Broken progression.");

@@ -19,7 +19,7 @@ namespace CookingCards.Editor
             Require(hand.CardCount==5,"Opening hand must contain five cards.");
             hand.DrawCard();Require(hand.CardCount==6,"First manual draw failed.");
             hand.DrawCard();Require(hand.CardCount==6&&!hand.CanDraw,"Immediate draw bypassed cooldown.");
-            await Task.Delay(3100);hand.DrawCard();Require(hand.CardCount==7,"Draw did not unlock.");
+            await Task.Delay(450);hand.DrawCard();Require(hand.CardCount==7,"Draw animation did not unlock.");
             foreach(var card in hand.GetComponentsInChildren<IngredientCard>())hand.ConsumeCard(card);
             for(int i=0;i<7;i++)Require(hand.TryReturnCard(IngredientKind.Shrimp),"Fixture card failed.");
             Require(!hand.TryExchangeSelectedCard(),"Exchange requires selection.");
@@ -81,7 +81,7 @@ namespace CookingCards.Editor
         private static async Task WaitForHand()
         {
             await Task.Delay(500);
-            for(int i=0;i<80;i++){var hand=UnityEngine.Object.FindFirstObjectByType<IngredientCardHand>();if(hand!=null&&!hand.IsDealing)return;await Task.Delay(100);}
+            for(int i=0;i<80;i++){var hand=UnityEngine.Object.FindFirstObjectByType<IngredientCardHand>();if(hand!=null&&!hand.IsDealing){GuidedLevelTutorial.Active?.Skip();return;}await Task.Delay(100);}
             throw new Exception("Opening deal timed out.");
         }
         private static void Require(bool condition,string message){if(!condition)throw new Exception(message);}

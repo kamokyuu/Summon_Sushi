@@ -41,7 +41,8 @@ namespace CookingCards
         private void Update(){Advance(Time.deltaTime);}
         public void Advance(float seconds)
         {
-            if(HasEnded || Menu.GameplayPauseController.IsPaused || hand==null || hand.IsDealing || belt==null)return;
+            if(HasEnded || GuidedLevelTutorial.Protecting || Menu.GameplayPauseController.IsPaused || hand==null || hand.IsDealing || belt==null)return;
+            if(ActiveLevel.Config.finishOnTarget&&Won){Finish();return;}
             Remaining=Mathf.Max(0,Remaining-Mathf.Max(0,seconds));Refresh();if(Remaining<=0)Finish();
         }
         private void Refresh()

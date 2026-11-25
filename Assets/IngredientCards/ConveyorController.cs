@@ -44,10 +44,11 @@ namespace CookingCards
         public void Configure(Sprite[] normal,Sprite[] broken,TMPro.TMP_Text wallet)
         {normalSprites=normal;brokenSprites=broken;walletLabel=wallet;}
         private void Awake(){rect=(RectTransform)transform;canvas=GetComponentInParent<Canvas>();}
-        public static int Price(RecipeGrade grade)=>grade==RecipeGrade.Common?150:grade==RecipeGrade.Uncommon?200:grade==RecipeGrade.Rare?300:350;
+        public static int Price(RecipeGrade grade)=>grade==RecipeGrade.Common?120:grade==RecipeGrade.Uncommon?180:grade==RecipeGrade.Rare?260:400;
         public static RecipeGrade GradeFromSample(float sample)=>ActiveLevel.Config.SamplePlate(sample);
         private void Update()
         {
+            if(GuidedLevelTutorial.Protecting)return;
             if(Menu.GameplayPauseController.IsPaused || CustomerSystem.GameFinished)return;
             float width=rect.rect.width;
             float step=speedPixelsPerSecond/Mathf.Max(.01f,canvas.scaleFactor)*Time.deltaTime;
@@ -91,6 +92,7 @@ namespace CookingCards
             {
                 if(bought>=Mathf.Clamp(limit,1,3))break;
                 int price=Price(p.Grade);Revenue+=price;PurchasedCount++;PreparationSession.Reward(price);
+                GuidedLevelTutorial.Notify(LevelGuideStep.Serve,p.ServedRecipe);
                 CustomerSystem.Active?.RecordConveyorPurchase(price);
                 if(walletLabel!=null)walletLabel.text="¥ "+PreparationSession.Yen;
                 plates.Remove(p);p.gameObject.SetActive(false);Destroy(p.gameObject);bought++;
@@ -101,6 +103,7 @@ namespace CookingCards
         {get{foreach(var p in plates)if(p.ServedRecipe!=null && !p.IsBroken && Mathf.Abs(((RectTransform)p.transform).anchoredPosition.x)<=rect.rect.width*.5f)return true;return false;}}
         public void RecordMissed(RecipeGrade grade)
         {
+            if(GuidedLevelTutorial.Protecting)return;
             if(CustomerSystem.GameFinished)return;
             MissedCount++;int penalty=BreakPenalty(grade);Penalties+=penalty;PreparationSession.Reward(-penalty);
             CustomerSystem.Active?.RecordConveyorPurchase(-penalty);

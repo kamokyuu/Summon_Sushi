@@ -25,6 +25,7 @@ namespace CookingCards
         private int CurrentHandLimit => ActiveLevel.Config.maximumHandCapacity;
         private float EffectiveDrawInterval=>ActiveLevel.Legacy?openingDealInterval:ActiveLevel.Config.drawInterval;
         private float nextAllowedDraw;
+        private RectTransform drawingCard;
         private float nextExchange;
         [SerializeField] private UnityEngine.UI.Button exchangeButton;
         [SerializeField] private TMPro.TMP_Text drawCooldownLabel;
@@ -52,7 +53,7 @@ namespace CookingCards
             nextAllowedDraw=Mathf.Max(nextAllowedDraw,nextExchange);PlayPaperFlip();return true;
         }
         public int CardCount => cards.Count;
-        public bool CanDraw => (ActiveLevel.Legacy || Time.time>=nextAllowedDraw) && (!ActiveLevel.ScriptedTutorial || TutorialGuide.CanDraw) && !Menu.GameplayPauseController.IsPaused && !CustomerSystem.GameFinished && !IsDealing && CardCount < CurrentHandLimit && (!ActiveLevel.ScriptedTutorial || PreparationSession.Remaining>0);
+        public bool CanDraw => (drawingCard==null||!drawingCard.gameObject.activeSelf) && (ActiveLevel.Legacy || Time.time>=nextAllowedDraw) && (!ActiveLevel.ScriptedTutorial || TutorialGuide.CanDraw) && !Menu.GameplayPauseController.IsPaused && !CustomerSystem.GameFinished && !IsDealing && CardCount < CurrentHandLimit && (!ActiveLevel.ScriptedTutorial || PreparationSession.Remaining>0);
         public bool IsCollapsed { get; private set; }
         public bool IsDealing { get; private set; }
         public bool IsAutoArrange { get; private set; }
@@ -167,6 +168,7 @@ namespace CookingCards
 
         private void Awake()
         {
+            if(!ActiveLevel.Legacy && GetComponent<GuidedLevelTutorial>()==null)gameObject.AddComponent<GuidedLevelTutorial>();
             if((!PreparationSession.Tutorial || PreparationSession.KnifeTutorial || PreparationSession.BossTutorial) && GetComponent<CardKnifeTool>()==null) gameObject.AddComponent<CardKnifeTool>();
             if(PreparationSession.Tutorial && !PreparationSession.BossTutorial && GetComponent<TutorialGuide>()==null) gameObject.AddComponent<TutorialGuide>();
             handGroup = GetComponent<CanvasGroup>();
@@ -205,8 +207,11 @@ namespace CookingCards
         {
             if (!CanDraw) return;
             if(!ActiveLevel.Legacy)nextAllowedDraw=Time.time+ActiveLevel.Config.manualDrawCooldownSeconds;
+            int before=cards.Count;
             SpawnRandomCard();
+            if(cards.Count>before)drawingCard=drawOrder[drawOrder.Count-1];
             TutorialGuide.Drew();
+            GuidedLevelTutorial.Notify(LevelGuideStep.Draw);
         }
 
         private void SpawnRandomCard(IngredientKind? forced=null)
@@ -337,6 +342,7 @@ namespace CookingCards
             for (int i = 0; i < cards.Count; i++) cards[i].SetSiblingIndex(i);
             if (IsAutoArrange) SortCards();
             RefreshDrawButton();
+            GuidedLevelTutorial.Notify(LevelGuideStep.Merge);
             return true;
         }
 
@@ -364,6 +370,7 @@ namespace CookingCards
                     angle = Mathf.Lerp(-4, 2, depth);
                 }
                 cards[i].anchoredPosition = Vector2.Lerp(cards[i].anchoredPosition, position, blend);
+                if(cards[i]==drawingCard&&(cards[i].anchoredPosition-position).sqrMagnitude<9)drawingCard=null;
                 cards[i].localRotation = Quaternion.Slerp(cards[i].localRotation, Quaternion.Euler(0, 0, angle), blend);
                 cards[i].localScale = Vector3.Lerp(cards[i].localScale, Vector3.one * (IsCollapsed ? stackScale : expandedCardScale), blend);
             }
