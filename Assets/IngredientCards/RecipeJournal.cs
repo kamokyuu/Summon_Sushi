@@ -11,10 +11,52 @@ namespace CookingCards
     /// <summary>Non-modal recipe reference. Reads the same active catalog as the Summon Box.</summary>
     public sealed class RecipeJournal : MonoBehaviour
     {
+#if UNITY_EDITOR
+        [SerializeField] private bool previewInEditor;
+        [SerializeField] private RecipeJournalTab previewCategory;
+        [SerializeField] private LevelConfig previewLevel;
+        [SerializeField,Min(0)] private int previewRecipeIndex;
+
+        private void OnValidate()
+        {
+            UnityEditor.EditorApplication.delayCall-=RefreshEditorVisibility;
+            UnityEditor.EditorApplication.delayCall+=RefreshEditorVisibility;
+        }
+        private void RefreshEditorVisibility(){if(this!=null)EditorApplyPreview(false);}
+        public void EditorSetPreviewVisibility(bool visible)
+        {
+            if(binderPanel!=null&&gameObject.scene.IsValid())binderPanel.SetActive(visible);
+        }
+        public void EditorApplyPreview(bool refreshContent)
+        {
+            if(UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode||!gameObject.scene.IsValid())return;
+            EditorSetPreviewVisibility(previewInEditor);
+            if(!previewInEditor||!refreshContent||binderPanel==null)return;
+            var source=new List<SushiRecipe>();
+            if(previewLevel!=null)
+            {foreach(var recipe in previewLevel.activeRecipes??System.Array.Empty<LevelRecipe>())if(recipe!=null)source.Add(recipe.Build());}
+            else source.AddRange(SushiRecipeCatalog.All);
+            source.RemoveAll(r=>previewCategory==RecipeJournalTab.Menu?r.Service!=RecipeService.DirectOrder:r.Service!=RecipeService.Conveyor||(int)r.Grade!=(int)previewCategory);
+            int page=Mathf.Clamp(previewRecipeIndex,0,Mathf.Max(0,source.Count-1));
+            EditorText(recipeText,source.Count>0?FormatRecipe(source[page]):"No recipes");
+            EditorText(pageLabel,source.Count>0?(page+1)+" / "+source.Count:"0 / 0");
+            EditorText(binderPanel.transform.Find("Page/Header")?.GetComponent<TMP_Text>(),previewCategory==RecipeJournalTab.Menu?"SIDE MENU":previewCategory.ToString().ToUpper()+" RECIPES");
+            UnityEditor.SceneView.RepaintAll();
+        }
+        private static void EditorText(TMP_Text label,string value)
+        {
+            if(label==null)return;
+            UnityEditor.Undo.RecordObject(label,"Preview recipe category");label.text=value;
+            UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(label);UnityEditor.EditorUtility.SetDirty(label);
+        }
+#endif
         [SerializeField] private GameObject binderPanel;
         [SerializeField] private UnityEngine.UI.Button openButton, previousButton, nextButton;
         [SerializeField] private UnityEngine.UI.Button[] tabButtons;
         [SerializeField] private TMP_Text recipeText, pageLabel;
+        [Header("Notebook artwork — edit each RectTransform in the Scene")]
+        [SerializeField] private UnityEngine.UI.Image binderBase,recipePaper,binderRings;
+        [SerializeField] private UnityEngine.UI.Button[] stickyTabs;
         private readonly int[] pageByTab = new int[5];
         private List<SushiRecipe> recipes;
         public RecipeJournalTab CurrentTab { get; private set; }
@@ -90,20 +132,11 @@ namespace CookingCards
             recipeText.text=recipe==null?"No recipes":FormatRecipe(recipe);
             pageLabel.text=recipe==null?"0 / 0":(pageByTab[(int)CurrentTab]+1)+" / "+recipes.Count;
             previousButton.interactable=nextButton.interactable=recipes.Count>1;
-            for(int i=0;i<tabButtons.Length;i++)
-            {
-                var colors=tabButtons[i].colors;
-                colors.normalColor=Color.white;
-                tabButtons[i].colors=colors;
-                tabButtons[i].GetComponentInChildren<TMP_Text>().fontStyle=i==(int)CurrentTab?FontStyles.Bold|FontStyles.Underline:FontStyles.Normal;
-            }
             var page=binderPanel.transform.Find("Page");
             if(page!=null)
             {
-                page.SetAsLastSibling();
                 var header=page.Find("Header")?.GetComponent<TMP_Text>();
                 if(header!=null)header.text=CurrentTab==RecipeJournalTab.Menu?"SIDE MENU":CurrentTab.ToString().ToUpper()+" RECIPES";
-                if(CurrentTab!=RecipeJournalTab.Menu)tabButtons[(int)CurrentTab].transform.SetAsLastSibling();
             }
         }
         public static List<SushiRecipe> RecipesForTab(RecipeJournalTab tab)

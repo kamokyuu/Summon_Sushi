@@ -40,6 +40,8 @@ namespace CookingCards
         public int Revenue { get; private set; }
         public int Penalties {get;private set;}
         public int PurchasedCount {get;private set;}
+        private readonly Dictionary<string,int> purchasedRecipes=new Dictionary<string,int>();
+        public IReadOnlyDictionary<string,int> PurchasedRecipes=>purchasedRecipes;
         public static int BreakPenalty(RecipeGrade grade)=>50+15*(int)grade;
         private RectTransform rect;
         private Canvas canvas;
@@ -48,7 +50,8 @@ namespace CookingCards
         private float nextTimedSpawn;
         private float Gap=>gapPixels/Mathf.Max(.01f,canvas.scaleFactor);
         public float EffectiveSpeed=>speedPixelsPerSecond*(ActiveLevel.Legacy?1:ActiveLevel.Config.conveyorSpeedMultiplier)/Mathf.Max(.01f,canvas.scaleFactor);
-        public float MinimumPlateSpacing=>Mathf.Max(10,plateSize.x)+(ActiveLevel.Legacy?Gap:Mathf.Max(8/Mathf.Max(.01f,canvas.scaleFactor),Mathf.Min(Gap,EffectiveSpeed*ActiveLevel.Config.plateSpawnInterval-Mathf.Max(10,plateSize.x))));
+        private float SpawnInterval=>ActiveLevel.Config.plateSpawnInterval*(ActiveLevel.Config.campaignShift&&DayShiftController.Active!=null&&DayShiftController.Active.CurrentWave==2?ActiveLevel.Config.secondWaveSpawnMultiplier:1);
+        public float MinimumPlateSpacing=>Mathf.Max(10,plateSize.x)+(ActiveLevel.Legacy?Gap:Mathf.Max(8/Mathf.Max(.01f,canvas.scaleFactor),Mathf.Min(Gap,EffectiveSpeed*SpawnInterval-Mathf.Max(10,plateSize.x))));
         private bool SlotFree(float x)
         {foreach(var plate in plates)if(Mathf.Abs(((RectTransform)plate.transform).anchoredPosition.x-x)<MinimumPlateSpacing-.01f)return false;return true;}
         private float FreeSlot(float requested)
@@ -89,7 +92,7 @@ namespace CookingCards
             // Spawn slots move independently of plate removal: a purchase leaves a real gap.
             if(!ActiveLevel.Legacy)
             {
-                if(Time.time>=nextTimedSpawn&&SlotFree(width*.5f+size*.5f)){SpawnPlate(GradeFromSample(Random.value),width*.5f+size*.5f);nextTimedSpawn=Time.time+ActiveLevel.Config.plateSpawnInterval;}
+                if(Time.time>=nextTimedSpawn&&SlotFree(width*.5f+size*.5f)){SpawnPlate(GradeFromSample(Random.value),width*.5f+size*.5f);nextTimedSpawn=Time.time+SpawnInterval;}
                 return;
             }
             if(!spawnInitialized){nextSpawnX=width*.5f-size*.5f;spawnInitialized=true;}
@@ -105,23 +108,26 @@ namespace CookingCards
             var plate=go.GetComponent<ConveyorPlate>();plate.Configure(this,grade,normalSprites[(int)grade],brokenSprites[(int)grade]);plates.Add(plate);return plate;
         }
         public void RecordServed(RecipeGrade grade){ServedCount++;}
-        public int BuyAvailable(int limit)
+        public int BuyAvailable(int limit,RecipeGrade? preferredGrade=null,Vector3? feedbackOrigin=null,string preferredRecipeId=null)
         {
-            if(ComboShopBoss.Selecting||Menu.GameplayPauseController.IsPaused || CustomerSystem.GameFinished)return 0;
+            if(ComboShopBoss.EncounterPaused||Menu.GameplayPauseController.IsPaused || CustomerSystem.GameFinished)return 0;
             var stock=new List<ConveyorPlate>();
-            foreach(var p in plates)if(p.ServedRecipe!=null && !p.IsBroken && Mathf.Abs(((RectTransform)p.transform).anchoredPosition.x)<=rect.rect.width*.5f)stock.Add(p);
+            foreach(var p in plates)if(p.ServedRecipe!=null && !p.IsBroken && (!preferredGrade.HasValue||p.Grade==preferredGrade.Value) && (preferredRecipeId==null||p.ServedRecipe.Id==preferredRecipeId) && Mathf.Abs(((RectTransform)p.transform).anchoredPosition.x)<=rect.rect.width*.5f)stock.Add(p);
             stock.Sort((a,b)=>a.transform.position.x.CompareTo(b.transform.position.x));
-            int bought=0;
+            int bought=0,before=Revenue;
             foreach(var p in stock)
             {
                 if(bought>=Mathf.Clamp(limit,1,3))break;
                 int price=Mathf.RoundToInt(Price(p.Grade)*p.SaleMultiplier);Revenue+=price;PurchasedCount++;PreparationSession.Reward(price);
+                string recipeId=p.ServedRecipe.Id;purchasedRecipes[recipeId]=purchasedRecipes.TryGetValue(recipeId,out int count)?count+1:1;
+                if(price>0)Menu.UIAudioManager.PlayYen();
                 ComboShopBoss.Active?.RecordPurchase(p.ServedRecipe);
                 GuidedLevelTutorial.Notify(LevelGuideStep.Serve,p.ServedRecipe);
                 CustomerSystem.Active?.RecordConveyorPurchase(price);
                 if(walletLabel!=null)walletLabel.text="¥ "+PreparationSession.Yen;
-                plates.Remove(p);p.gameObject.SetActive(false);Destroy(p.gameObject);bought++;
+                plates.Remove(p);p.RemoveAfterPurchase();bought++;
             }
+            if(bought>0)GameplayHudFeedback.Active?.MoneyEarned(Revenue-before,feedbackOrigin??transform.position);
             return bought;
         }
         public bool HasAvailableFood

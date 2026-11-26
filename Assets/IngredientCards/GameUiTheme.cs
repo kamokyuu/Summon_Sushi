@@ -7,7 +7,7 @@ namespace CookingCards
     {
         public TMP_FontAsset font;
         public Sprite buttonSprite;
-        public static readonly Color Ink=new Color32(0x6A,0x41,0x41,255);
+        public static readonly Color Ink=new Color32(0x4B,0x2F,0x22,255);
         public static readonly Color Paper=new Color32(0xFB,0xF2,0xE2,255);
         public void Apply(GameObject root)
         {

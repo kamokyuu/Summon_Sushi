@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9786051b34a6cb64ca99cd81f26150cd, type: 3}
+  m_Name: Day04
+  m_EditorClassIdentifier: Assembly-CSharp::CookingCards.LevelConfig
+  legacyCompatibility: 0
+  activeRecipes:
+  - id: tamago_nigiri
+    displayName: Tamago Nigiri
+    grade: 0
+    family: 0
+    tutorialDish: 0
+    demandWeight: 1
+    ingredients:
+    - ingredient: 0
+      count: 1
+    - ingredient: 2
+      count: 1
+  - id: tamago_maki
+    displayName: Tamago Maki
+    grade: 1
+    family: 1
+    tutorialDish: 0
+    demandWeight: 1
+    ingredients:
+    - ingredient: 0
+      count: 1
+    - ingredient: 1
+      count: 1
+    - ingredient: 2
+      count: 1
+  - id: tamago_avocado_roll
+    displayName: Tamago Avocado Roll
+    grade: 2
+    family: 1
+    tutorialDish: 0
+    demandWeight: 1
+    ingredients:
+    - ingredient: 0
+      count: 1
+    - ingredient: 1
+      count: 1
+    - ingredient: 3
+      count: 1
+    - ingredient: 2
+      count: 1
+  tutorialRecipes: []
+  activeIngredients: 00000000020000000100000003000000
+  ingredientWeights: []
+  ingredientBalanceVersion: 2
+  verticalSliceBatchVersion: 1
+  batchBVersion: 1
+  batchCVersion: 1
+  batchDVersion: 1
+  batchEVersion: 1
+  pickyCustomerChance: 0.2
+  hungryCustomerChance: 0.25
+  conveyorSpeedMultiplier: 1
+  riceDemandMultiplier: 1.1
+  noriDemandMultiplier: 1
+  premiumDemandMultiplier: 1.2
+  guidedSteps: 
+  foodVisuals:
+  - recipeId: tamago_nigiri
+    sprite: {fileID: 6211259571203980433, guid: eb62144e624f14340bbfbe2200fbb426, type: 3}
+  - recipeId: tamago_maki
+    sprite: {fileID: 0}
+  - recipeId: tamago_avocado_roll
+    sprite: {fileID: 0}
+  finishOnTarget: 0
+  campaignShift: 1
+  weekCampaignVersion: 1
+  campaignDay: 4
+  dailyEventTitle: Tamago Special
+  dailyEventDescription: Egg-focused dishes and ingredients.
+  bossKind: 0
+  platterOrders: []
+  firstWaveSeconds: 70
+  bossArrivalSeconds: 90
+  minimumShiftSeconds: 120
+  bossTimeLimit: 60
+  secondWaveSpawnMultiplier: 0.9
+  bossTitle: "Tamago Special \u2014 AYCE Guest"
+  ayceOrders:
+  - grade: 0
+    quantity: 2
+  - grade: 1
+    quantity: 1
+  powerUps:
+  - title: Extra Hand
+    description: +2 hand slots this shift; maximum 11
+    effect: 0
+  - title: Knife Refill
+    description: Restore up to 2 knife charges
+    effect: 1
+  - title: Conveyor Freeze
+    description: Freeze conveyor for 10 seconds
+    effect: 2
+  - title: Plate Shield
+    description: Protect the next missed plate
+    effect: 3
+  - title: Lucky Draw
+    description: Choose 2 ingredients; needs 2 free slots
+    effect: 4
+  plateWeights:
+  - grade: 0
+    weight: 4
+  - grade: 1
+    weight: 4
+  - grade: 2
+    weight: 2
+  initialHandSize: 5
+  maximumHandCapacity: 7
+  drawInterval: 0.25
+  drawMode: 3
+  shuffleBagSize: 20
+  manualDrawCooldownSeconds: 0
+  exchangeEnabled: 1
+  exchangeCooldownSeconds: 3
+  nextLevel: {fileID: 0}
+  durationSeconds: 150
+  targetYen: 1200
+  plateSpawnInterval: 10
+  initialKnifeCharges: 2
+  mergeEnabled: 1
+  knifeEnabled: 1
+  comboEnabled: 1
+  powerUpsEnabled: 1
+  bossCustomersEnabled: 1

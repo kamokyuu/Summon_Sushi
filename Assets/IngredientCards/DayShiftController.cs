@@ -13,6 +13,9 @@ namespace CookingCards
         [SerializeField] private TMPro.TMP_Text hud;
         public void ConfigureDisplay(TMPro.TMP_Text display){hud=display;}
         public float Remaining {get;private set;}
+        public float Elapsed=>Mathf.Max(0,durationSeconds-Remaining);
+        public int CurrentWave=>Elapsed<ActiveLevel.Config.firstWaveSeconds?1:2;
+        public string WaveObjective=>CurrentWave==1?"WAVE 1 — welcome guests and build income":"WAVE 2 — reach the income target and complete AYCE";
         public bool HasEnded {get;private set;}
         public bool Won=>belt!=null && belt.Revenue-belt.Penalties>=targetYen&&(!ActiveLevel.Config.bossCustomersEnabled||ComboShopBoss.Active!=null&&ComboShopBoss.Active.BossComplete);
         public int TargetYen=>targetYen;
@@ -38,27 +41,32 @@ namespace CookingCards
             }
             Refresh();
         }
-        private void Update(){Advance(Time.deltaTime);}
+        private void Update(){Advance(Time.deltaTime);Refresh();}
         public void Advance(float seconds)
         {
-            if(HasEnded || GuidedLevelTutorial.Protecting || ComboShopBoss.Selecting || Menu.GameplayPauseController.IsPaused || hand==null || hand.IsDealing || belt==null)return;
+            if(HasEnded || GuidedLevelTutorial.Protecting || ComboShopBoss.EncounterPaused || Menu.GameplayPauseController.IsPaused || hand==null || hand.IsDealing || belt==null)return;
             var feature=ComboShopBoss.Active;
-            feature?.CheckBoss(belt.Revenue-belt.Penalties>=targetYen);
+            feature?.CheckBoss(ActiveLevel.Config.campaignShift?Elapsed>=ActiveLevel.Config.bossArrivalSeconds:belt.Revenue-belt.Penalties>=targetYen);
+            if(feature!=null&&feature.BossAnnouncing)return;
             if(feature!=null&&feature.BossFailed){Finish();return;}
-            if(ActiveLevel.Config.finishOnTarget&&Won){Finish();return;}
-            if(feature!=null&&feature.BossStarted&&!feature.BossComplete)return;
+            if((ActiveLevel.Config.finishOnTarget||ActiveLevel.Config.campaignShift&&Elapsed>=ActiveLevel.Config.minimumShiftSeconds)&&Won){Finish();return;}
+            if(!ActiveLevel.Config.campaignShift&&feature!=null&&feature.BossStarted&&!feature.BossComplete)return;
             Remaining=Mathf.Max(0,Remaining-Mathf.Max(0,seconds));Refresh();if(Remaining<=0)Finish();
         }
         private void Refresh()
         {
-            if(hud!=null && belt!=null)hud.text=LevelTitle+"   "+(Mathf.CeilToInt(Remaining)/60).ToString("00")+":"+(Mathf.CeilToInt(Remaining)%60).ToString("00")+"\nNET ¥"+(belt.Revenue-belt.Penalties)+" / ¥"+targetYen;
+            if(hud!=null && belt!=null)hud.text=LevelTitle+"   "+(Mathf.CeilToInt(Remaining)/60).ToString("00")+":"+(Mathf.CeilToInt(Remaining)%60).ToString("00")+"\n¥"+Mathf.RoundToInt(GameplayHudFeedback.Active!=null?GameplayHudFeedback.Active.DisplayedRevenue:belt.Revenue-belt.Penalties)+" / ¥"+targetYen;
         }
-        private string LevelTitle=>ActiveLevel.Legacy?"DAY 1":ActiveLevel.Config.name.ToUpperInvariant();
+        private string LevelTitle=>ActiveLevel.Config.campaignShift?"DAY"+ActiveLevel.Config.campaignDay.ToString("00")+" W"+CurrentWave:ActiveLevel.Legacy?"DAY 1":ActiveLevel.Config.name.ToUpperInvariant();
         private void Finish()
         {
             HasEnded=true;
+            GameMusic.StopForCompletion();
+            if(Won)Menu.UIAudioManager.PlayShiftDone();
+            if(Won)Menu.CampaignProgress.SaveShift();
             if(resultText!=null)resultText.text="<size=36><b>"+LevelTitle+" "+(Won?"COMPLETE":"FAILED")+"</b></size>\n\nSales: ¥"+belt.Revenue+"\nBroken plate penalties: -¥"+belt.Penalties+"\nNet: ¥"+(belt.Revenue-belt.Penalties)+" / ¥"+targetYen+"\n\nSushi sold: "+belt.PurchasedCount+"\nBroken plates: "+belt.MissedCount;
             if(resultText!=null&&ComboShopBoss.Active!=null){resultText.text+=ComboShopBoss.Active.Results();resultText.enableAutoSizing=true;resultText.fontSizeMin=12;resultText.fontSizeMax=25;}
+            if(resultText!=null&&Won&&ActiveLevel.Config.campaignShift&&ActiveLevel.Config.campaignDay==7)resultText.text="<b>WEEK01 COMPLETE — CHAPTER COMPLETE</b>\n"+resultText.text;
             if(resultPanel!=null){resultPanel.SetActive(true);resultPanel.transform.SetAsLastSibling();var nav=resultPanel.GetComponent<Menu.ResultsNavigation>()??resultPanel.AddComponent<Menu.ResultsNavigation>();nav.Show();}
         }
     }

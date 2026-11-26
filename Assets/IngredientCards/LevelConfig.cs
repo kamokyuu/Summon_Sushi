@@ -10,8 +10,12 @@ namespace CookingCards
     {
         public string title,description;
         public PowerUpEffect effect;
+        public int Price=>effect==PowerUpEffect.LuckyDraw?300:effect==PowerUpEffect.ExtraHand?250:150;
     }
     [Serializable] public sealed class RecipeFoodVisual {public string recipeId;public Sprite sprite;}
+    [Serializable] public sealed class BossPlateOrder {public RecipeGrade grade;[Min(1)]public int quantity=1;}
+    public enum CampaignBossKind { AYCE,SushiPlatter }
+    [Serializable]public sealed class BossRecipeOrder {public string recipeId;[Min(1)]public int quantity=1;}
     public enum IngredientDrawMode { LegacyWeightedBag=0, UniformActiveIngredients=1, WeightedActiveIngredients=2, RecipeDemandShuffleBag=3 }
     [Serializable] public sealed class IngredientDrawWeight { public IngredientKind ingredient; [Min(0)] public float weight=1; }
     [Serializable] public sealed class LevelIngredientAmount { public IngredientKind ingredient; [Min(1)] public int count=1; }
@@ -55,11 +59,23 @@ namespace CookingCards
         [HideInInspector] public int batchBVersion;
         [HideInInspector] public int batchCVersion;
         [HideInInspector] public int batchDVersion;
+        [HideInInspector] public int batchEVersion;
+        [Range(0,1)]public float pickyCustomerChance,hungryCustomerChance;
         [Min(.1f)] public float conveyorSpeedMultiplier=1;
         [Min(.1f)] public float riceDemandMultiplier=1,noriDemandMultiplier=1,premiumDemandMultiplier=1;
         public LevelGuideStep[] guidedSteps;
         public RecipeFoodVisual[] foodVisuals;
         public bool finishOnTarget;
+        public bool campaignShift;
+        [HideInInspector]public int weekCampaignVersion;
+        [Range(1,7)]public int campaignDay=1;
+        public string dailyEventTitle="Grand Opening",dailyEventDescription="Welcome your first guests.";
+        public CampaignBossKind bossKind;
+        public BossRecipeOrder[] platterOrders;
+        [Min(1)]public float firstWaveSeconds=70,bossArrivalSeconds=90,minimumShiftSeconds=120,bossTimeLimit=30;
+        [Range(.5f,1)]public float secondWaveSpawnMultiplier=.9f;
+        public string bossTitle="AYCE Guest";
+        public BossPlateOrder[] ayceOrders;
         public LevelPowerUp[] powerUps;
         public PlateSpawnWeight[] plateWeights;
         [Min(0)] public int initialHandSize=7;

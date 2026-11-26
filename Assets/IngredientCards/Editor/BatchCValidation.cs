@@ -22,7 +22,7 @@ namespace CookingCards.Editor
                 {
                     var cards=RecipeDemandBag.Build(config);Require(cards.All(config.Allows),"Inactive resource.");
                     if(n==1)Require(cards.Count(k=>k==IngredientKind.Rice)==10,"Level01 changed.");
-                    else Require(cards.Count(k=>k==IngredientKind.Rice)>=9&&cards.Count(k=>k==IngredientKind.Nori)>=3&&cards.Count(k=>k==IngredientKind.Avocado||k==IngredientKind.Salmon||k==IngredientKind.Tuna)<=6,"Basic resource balance failed.");
+                    else Require(cards.Count(k=>k==IngredientKind.Rice)>=(n==3?7:9)&&cards.Count(k=>k==IngredientKind.Nori)>=3&&cards.Count(k=>k==IngredientKind.Avocado||k==IngredientKind.Salmon||k==IngredientKind.Tuna)<=6,"Basic resource balance failed.");
                 }
                 Require(config.manualDrawCooldownSeconds==0&&config.mergeEnabled==(n>1)&&config.knifeEnabled==(n==3),"Wrong gates.");
             }
@@ -40,13 +40,13 @@ namespace CookingCards.Editor
             Cook(ActiveLevel.Recipes.First(r=>r.Grade==RecipeGrade.Uncommon));Require(guide.Current==LevelGuideStep.Merge,"Level02 merge guide missing.");
             var rice=hand.GetComponentsInChildren<IngredientCard>().Where(c=>c.Ingredient==IngredientKind.Rice).Take(2).ToArray();Require(rice.Length==2&&hand.TryCombine(rice[0],rice[1])&&!guide.IsGuiding,"Contextual Rice merge failed.");belt.BuyAvailable(3);
             ClearHand();hand.TryReturnCard(IngredientKind.Nori);hand.TryReturnCard(IngredientKind.Nori);var nori=hand.GetComponentsInChildren<IngredientCard>();Require(hand.TryCombine(nori[0],nori[1]),"Nori merge failed.");Require(!hand.TrySplitCard(hand.GetComponentsInChildren<IngredientCard>().First()),"Level02 knife enabled.");
-            feature.Missed();int before=belt.Revenue;float[] multipliers={1,1.1f,1.2f,1.3f,1.4f};
+            feature.Missed();int before=belt.Revenue;float[] multipliers={1,1.1f,1.2f,1.2f,1.2f};
             for(int i=0;i<5;i++)
             {
                 var plate=belt.SpawnPlate(common.Grade,0);Require(plate.TryServe(common),"Combo fill failed.");Require(Mathf.Abs(plate.SaleMultiplier-multipliers[i])<.001f,"Wrong combo snapshot.");
                 if(i==2){Require(feature.ShopOpen&&feature.Offered.Count==3,"Third fill shop failed.");feature.CloseShop();}
             }
-            feature.Missed();while(belt.HasAvailableFood)belt.BuyAvailable(3);Require(belt.Revenue-before==720,"Snapshots not paid exactly once.");Require(belt.BuyAvailable(3)==0,"Double credit.");
+            feature.Missed();while(belt.HasAvailableFood)belt.BuyAvailable(3);Require(belt.Revenue-before==684,"Snapshots not paid exactly once.");Require(belt.BuyAvailable(3)==0,"Double credit.");
             runtime=UnityEngine.Object.Instantiate(ActiveLevel.Config);ActiveLevel.Select(runtime);PreparationSession.Reward(5000);
             Power(PowerUpEffect.ExtraHand);Require(hand.Capacity==8,"Extra hand failed.");
             ClearHand();runtime.powerUps=new[]{Option(PowerUpEffect.LuckyDraw)};Require(feature.OpenShop()&&feature.Purchase(0),"Lucky Draw selection failed.");int funds=PreparationSession.Yen;Require(!feature.PickResource(IngredientKind.Ikura)&&PreparationSession.Yen==funds,"Invalid Lucky Draw charged.");Require(feature.PickResource(IngredientKind.Nori)&&hand.CardCount==3&&PreparationSession.Yen==funds-250,"Lucky Draw delivery failed.");Require(!feature.PickResource(IngredientKind.Nori),"Duplicate Lucky Draw.");

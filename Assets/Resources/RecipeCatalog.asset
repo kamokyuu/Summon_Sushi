@@ -1,0 +1,215 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 705d355f39a851a47a73ac4dc802fa26, type: 3}
+  m_Name: RecipeCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::CookingCards.RecipeCatalog
+  foodVisualSettings:
+  - recipeId: alaska_roll
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: avocado_maki
+    foodScale: 0.54
+    offsetX: 0
+    offsetY: 8.93
+    rotationZ: 0
+  - recipeId: avocado_nigiri
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: beef_roll
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: chicken_karaage
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: chicken_roll
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: cucumber_avocado_roll
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: ebi_chawanmushi
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: ebi_maki
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: ebi_nigiri
+    foodScale: 0
+    offsetX: 12.91
+    offsetY: 7.38
+    rotationZ: 0
+  - recipeId: ebi_temaki
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: ebi_tempura
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: ikura_gunkan
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: kappa_maki
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: kinoko_nigiri
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: maguro_nigiri
+    foodScale: 0
+    offsetX: 0
+    offsetY: 14.68
+    rotationZ: 0
+  - recipeId: maguro_sashimi
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: maguro_temaki
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: matsutake_nigiri
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: matsutake_suimono
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: mixed_sashimi
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: salmon_avocado_roll
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: salmon_maki
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: salmon_nigiri
+    foodScale: 0
+    offsetX: 1.82
+    offsetY: 10.2
+    rotationZ: 0
+  - recipeId: salmon_sashimi
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: salmon_temaki
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: shiitake_maki
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: shiitake_temaki
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: shrimp_avocado_roll
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: tamago_avocado_roll
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: tamago_maki
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: tamago_nigiri
+    foodScale: 0
+    offsetX: 2.32
+    offsetY: 11.97
+    rotationZ: 0
+  - recipeId: tamagoyaki
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: tekka_maki
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: tobiko_gunkan
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: tuna_avocado_maki
+    foodScale: 0.59
+    offsetX: 0
+    offsetY: 16.72
+    rotationZ: 0
+  - recipeId: tuna_avocado_roll
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: tuna_cucumber_roll
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: unagi_avocado_roll
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0
+  - recipeId: unagi_nigiri
+    foodScale: 0
+    offsetX: 0
+    offsetY: 0
+    rotationZ: 0

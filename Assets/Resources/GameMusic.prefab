@@ -142,3 +142,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246fba3c4e9202c44963e009b861e50c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CookingCards.GameMusic
+  gameplayClip: {fileID: 8300000, guid: 656bd9821b6001e4d96dfca2abd6ab4f, type: 3}

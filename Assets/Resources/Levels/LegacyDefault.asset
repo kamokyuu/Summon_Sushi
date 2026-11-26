@@ -126,6 +126,9 @@ MonoBehaviour:
   batchBVersion: 1
   batchCVersion: 0
   batchDVersion: 1
+  batchEVersion: 0
+  pickyCustomerChance: 0
+  hungryCustomerChance: 0
   conveyorSpeedMultiplier: 1
   riceDemandMultiplier: 1
   noriDemandMultiplier: 1
@@ -143,6 +146,20 @@ MonoBehaviour:
   - recipeId: salmon_sashimi
     sprite: {fileID: 0}
   finishOnTarget: 0
+  campaignShift: 0
+  weekCampaignVersion: 0
+  campaignDay: 1
+  dailyEventTitle: Grand Opening
+  dailyEventDescription: Welcome your first guests.
+  bossKind: 0
+  platterOrders: []
+  firstWaveSeconds: 70
+  bossArrivalSeconds: 90
+  minimumShiftSeconds: 120
+  bossTimeLimit: 30
+  secondWaveSpawnMultiplier: 0.9
+  bossTitle: AYCE Guest
+  ayceOrders: []
   powerUps: []
   plateWeights:
   - grade: 0

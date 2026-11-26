@@ -50,6 +50,9 @@ MonoBehaviour:
   batchBVersion: 1
   batchCVersion: 0
   batchDVersion: 1
+  batchEVersion: 1
+  pickyCustomerChance: 0
+  hungryCustomerChance: 0
   conveyorSpeedMultiplier: 1.5
   riceDemandMultiplier: 1
   noriDemandMultiplier: 1
@@ -59,8 +62,22 @@ MonoBehaviour:
   - recipeId: ebi_nigiri
     sprite: {fileID: 21300000, guid: b693d03f5e0d78f4da03f1651133f592, type: 3}
   - recipeId: tamago_nigiri
-    sprite: {fileID: -1158443415730992199, guid: 7d4bdf336d6f51844a700f5faf997eae, type: 3}
+    sprite: {fileID: 6211259571203980433, guid: eb62144e624f14340bbfbe2200fbb426, type: 3}
   finishOnTarget: 1
+  campaignShift: 0
+  weekCampaignVersion: 0
+  campaignDay: 1
+  dailyEventTitle: Grand Opening
+  dailyEventDescription: Welcome your first guests.
+  bossKind: 0
+  platterOrders: []
+  firstWaveSeconds: 70
+  bossArrivalSeconds: 90
+  minimumShiftSeconds: 120
+  bossTimeLimit: 30
+  secondWaveSpawnMultiplier: 0.9
+  bossTitle: AYCE Guest
+  ayceOrders: []
   powerUps: []
   plateWeights:
   - grade: 0

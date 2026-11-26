@@ -24,6 +24,12 @@ namespace CookingCards
         public const int HandLimit = 7;
         private int CurrentHandLimit => Capacity;
         public int Capacity=>ActiveLevel.Config.maximumHandCapacity+(ComboShopBoss.Active!=null?ComboShopBoss.Active.ExtraHandSlots:0);
+        public bool TryGiveCards(params IngredientKind[] kinds)
+        {
+            if(kinds==null||kinds.Length==0||IsDealing||CustomerSystem.GameFinished||CardCount+kinds.Length>Capacity)return false;
+            foreach(var kind in kinds)if(!ActiveLevel.Config.Allows(kind)||System.Array.Find(cardPrefabs,p=>p!=null&&p.Ingredient==kind)==null)return false;
+            foreach(var kind in kinds)TryReturnCard(kind);return true;
+        }
         public bool TryGiveCards(IngredientKind kind,int count)
         {
             if(count<1||IsDealing||CustomerSystem.GameFinished||CardCount+count>Capacity||!ActiveLevel.Config.Allows(kind)||System.Array.Find(cardPrefabs,p=>p!=null&&p.Ingredient==kind)==null)return false;
@@ -92,7 +98,7 @@ namespace CookingCards
         {
             if (drawPile == null) return;
             var source = drawPile.GetComponent<AudioSource>();
-            if (source != null && source.clip != null) source.PlayOneShot(source.clip);
+            if (source != null && source.clip != null) Menu.UIAudioManager.PlayCardDraw(source.clip);
         }
 
         private void RestoreDrawOrder()
@@ -215,7 +221,7 @@ namespace CookingCards
             if(!ActiveLevel.Legacy)nextAllowedDraw=Time.time+ActiveLevel.Config.manualDrawCooldownSeconds;
             int before=cards.Count;
             SpawnRandomCard();
-            if(cards.Count>before)drawingCard=drawOrder[drawOrder.Count-1];
+            if(cards.Count>before){drawingCard=drawOrder[drawOrder.Count-1];PlayPaperFlip();}
             TutorialGuide.Drew();
             GuidedLevelTutorial.Notify(LevelGuideStep.Draw);
         }
@@ -301,7 +307,7 @@ namespace CookingCards
                 cards.Add(rect);drawOrder.Add(rect);
             }
             if(IsAutoArrange)SortCards();
-            TutorialGuide.Cut();RefreshDrawButton();return true;
+            TutorialGuide.Cut();RefreshDrawButton();Menu.UIAudioManager.PlayKnifeSlash();return true;
         }
 
         public bool TryCombine(IngredientCard source, IngredientCard target)
@@ -349,6 +355,7 @@ namespace CookingCards
             if (IsAutoArrange) SortCards();
             RefreshDrawButton();
             GuidedLevelTutorial.Notify(LevelGuideStep.Merge);
+            Menu.UIAudioManager.PlayCardMerge();
             return true;
         }
 

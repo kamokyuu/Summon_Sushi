@@ -1,0 +1,176 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &47725831872520108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3428018524084706221}
+  - component: {fileID: 2815139097174915878}
+  - component: {fileID: 4711520815545028298}
+  m_Layer: 0
+  m_Name: UIAudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3428018524084706221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47725831872520108}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &2815139097174915878
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47725831872520108}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &4711520815545028298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47725831872520108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0023d3337022eab40bec49018bae7b26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CookingCards.Menu.UIAudioManager
+  clickClip: {fileID: 8300000, guid: ff6927cde46d67f4989e8982aa3b48b2, type: 3}
+  hoverClip: {fileID: 8300000, guid: cf3323f7404d2b043a840064ad99fc2c, type: 3}
+  volume: 1
+  comboClip: {fileID: 8300000, guid: 084e7ad238687fd4c92ac1e13b0f652a, type: 3}
+  yenClip: {fileID: 8300000, guid: 5869dcdc94e980d4c93f1659b527deca, type: 3}
+  plateBreakClip: {fileID: 8300000, guid: e75a767374d6ac341a2e73d06e40f1a3, type: 3}
+  knifeSlashClip: {fileID: 8300000, guid: 344fc0453aebb9a489fc108b7de21171, type: 3}
+  cardMergeClip: {fileID: 8300000, guid: 1ed315bf797043743b911621f12c1217, type: 3}
+  cardDrawClip: {fileID: 8300000, guid: ed538e987f557b346aaf8f3500d7a9d6, type: 3}
+  powerUpClip: {fileID: 0}
+  cardSummonClip: {fileID: 8300000, guid: 22c71ffaffa0738419b18e220abd5093, type: 3}
+  serveClip: {fileID: 8300000, guid: 4542455da87e32d4280706b0b0b43747, type: 3}
+  shiftDoneClip: {fileID: 8300000, guid: dc79186fdea068d42a1c13ac30f7392e, type: 3}
+  shiftDoneVolume: 0.7
+  serveVolume: 0.3
+  summonVolume: 0.3
+  hoverVolume: 0.15
+  clickVolume: 0.35
+  drawVolume: 0.35
+  mergeVolume: 0.55
+  knifeVolume: 0.45
+  yenVolume: 0.25
+  breakVolume: 0.4
+  comboVolumeX1: 0.05
+  comboVolumeX2: 0.35
+  comboVolumeX3: 0.55
+  powerUpVolume: 0.7
+  maximumEffectVoices: 4
+  sameClipMinimumInterval: 0.06
+  comboPitchX1: 1
+  comboPitchX2: 1.15
+  comboPitchX3: 1.3

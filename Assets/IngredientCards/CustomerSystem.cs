@@ -106,6 +106,7 @@ namespace CookingCards
                 if(customer.IsGlutton)nextBossCourse=Time.time+4;
                 int revenue=SushiQualityRules.SalePrice(dish,qualityStars);
                 Coins+=revenue;
+                if(revenue>0)Menu.UIAudioManager.PlayYen();
                 PreparationSession.Reward(revenue);
                 if(PreparationSession.Tutorial)TutorialTotals.Record(dish,qualityStars,revenue);
                 servedDishes[(int)dish]++;
@@ -145,6 +146,8 @@ namespace CookingCards
         private void EndGame()
         {
             HasEnded = true;
+            GameMusic.StopForCompletion();
+            if(!failed)Menu.UIAudioManager.PlayShiftDone();
             PreparationSession.CarryRemaining(Object.FindFirstObjectByType<IngredientCardHand>(),Object.FindFirstObjectByType<IngredientStove>());
             if (resultsText != null) resultsText.text = PreparationSession.Tutorial?(failed?"TUTORIAL FAILED":"TUTORIAL COMPLETE")+TutorialTotals.Summary():ResultsSummary();
             if (resultsPanel != null) { resultsPanel.SetActive(true); resultsPanel.transform.SetAsLastSibling(); }

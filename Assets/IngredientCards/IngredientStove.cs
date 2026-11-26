@@ -117,6 +117,7 @@ namespace CookingCards
             if(!PreparationSession.Tutorial && !ActiveLevel.Config.Allows(kind))return false;
             if (!hand.ConsumeCard(card)) return false;
             ingredients[(int)kind]++;
+            Menu.UIAudioManager.PlayCardSummon();
             if(PreparationSession.Tutorial)CookAvailableRecipes();
             RefreshInventory();
             return true;

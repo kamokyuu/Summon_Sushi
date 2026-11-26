@@ -7,6 +7,8 @@ namespace CookingCards
         public static int Draws { get; private set; }
         [SerializeField] private TMPro.TMP_Text label;
         [SerializeField] private GameObject recipeReference;
+        private Menu.TutorialDialogueOverlay dialogue;
+        private int shownStep=-1,shownDraws=-1;
         public static bool CanDeposit => !PreparationSession.Tutorial || PreparationSession.BossTutorial || Step>=2;
         public static bool CanDraw => !PreparationSession.Tutorial || PreparationSession.BossTutorial || Step>=1;
         public static void Merged() { if(PreparationSession.Tutorial && !PreparationSession.KnifeTutorial && Step==0) Step=1; }
@@ -16,13 +18,15 @@ namespace CookingCards
         private void Awake() { Step=0;Draws=0; }
         private void Start()
         {
+            dialogue=GetComponentInParent<Canvas>().GetComponentInChildren<Menu.TutorialDialogueOverlay>(true);
             EnsureUi();
-            label.gameObject.SetActive(PreparationSession.Tutorial);
-            recipeReference.SetActive(PreparationSession.Tutorial);
+            if(label!=null)label.gameObject.SetActive(PreparationSession.Tutorial&&dialogue==null);
+            if(recipeReference!=null)recipeReference.SetActive(PreparationSession.Tutorial);
             if(!PreparationSession.Tutorial){enabled=false;return;}
         }
         public void EnsureUi()
         {
+            if(dialogue!=null)return;
             if(label!=null && recipeReference!=null)return;
             var go=new GameObject("TutorialInstruction",typeof(RectTransform),typeof(TMPro.TextMeshProUGUI));go.transform.SetParent(GetComponentInParent<Canvas>().transform,false);
             var rect=(RectTransform)go.transform;rect.anchorMin=rect.anchorMax=new Vector2(.5f,1);rect.pivot=new Vector2(.5f,1);rect.anchoredPosition=new Vector2(0,-15);rect.sizeDelta=new Vector2(1000,90);
@@ -36,13 +40,19 @@ namespace CookingCards
         }
         private void Update()
         {
-            if(CustomerSystem.GameFinished) { label.text=""; return; }
+            if(CustomerSystem.GameFinished) { if(label!=null)label.text="";dialogue?.HideDialogue();return; }
             if(PreparationSession.KnifeTutorial)
             {
-                label.text=Step==0?"KNIFE TUTORIAL: Drag KNIFE onto Salmon.\n1 Salmon becomes 2 Tuna. Knife has 3 uses.":Step==2?"STEP 2: Put 2 Rice + 2 Tuna into the summon box.\nCustomer timers start after this first summon.":"Customers now have 20 seconds! Watch their patience bars.\nEbi = 2 Rice + 1 Shrimp / Maguro = 2 Rice + 2 Tuna";
+                Publish(Step==0?"KNIFE TUTORIAL: Drag KNIFE onto Salmon.\n1 Salmon becomes 2 Tuna. Knife has 3 uses.":Step==2?"STEP 2: Put 2 Rice + 2 Tuna into the summon box.\nCustomer timers start after this first summon.":"Customers now have 20 seconds! Watch their patience bars.\nEbi = 2 Rice + 1 Shrimp / Maguro = 2 Rice + 2 Tuna");
                 return;
             }
-            label.text=Step==0?"MERGE TUTORIAL: Merge Shrimp + Shrimp into Tuna.":Step==1?"STEP 2: Click DRAW three times ("+Draws+"/3).":"STEP 3: Merge the new Shrimp pair, then summon with 2 Rice + 2 Tuna.\nEbi = 2 Rice + 1 Shrimp";
+            Publish(Step==0?"MERGE TUTORIAL: Merge Shrimp + Shrimp into Tuna.":Step==1?"STEP 2: Click DRAW three times ("+Draws+"/3).":"STEP 3: Merge the new Shrimp pair, then summon with 2 Rice + 2 Tuna.\nEbi = 2 Rice + 1 Shrimp");
+        }
+        private void Publish(string text)
+        {
+            if(dialogue==null){if(label!=null)label.text=text;return;}
+            if(shownStep==Step&&shownDraws==Draws)return;
+            shownStep=Step;shownDraws=Draws;dialogue.ShowLegacyInstruction(Step,PreparationSession.KnifeTutorial,text);
         }
     }
 }

@@ -68,6 +68,9 @@ MonoBehaviour:
   batchBVersion: 1
   batchCVersion: 1
   batchDVersion: 1
+  batchEVersion: 1
+  pickyCustomerChance: 0.2
+  hungryCustomerChance: 0.2
   conveyorSpeedMultiplier: 1.2
   riceDemandMultiplier: 1.35
   noriDemandMultiplier: 2
@@ -77,27 +80,41 @@ MonoBehaviour:
   - recipeId: ebi_nigiri
     sprite: {fileID: 21300000, guid: b693d03f5e0d78f4da03f1651133f592, type: 3}
   - recipeId: tamago_nigiri
-    sprite: {fileID: -1158443415730992199, guid: 7d4bdf336d6f51844a700f5faf997eae, type: 3}
+    sprite: {fileID: 6211259571203980433, guid: eb62144e624f14340bbfbe2200fbb426, type: 3}
   - recipeId: avocado_maki
     sprite: {fileID: 21300000, guid: 8edaa710648dc8e4db5a2977458aa9a6, type: 3}
   - recipeId: maguro_nigiri
-    sprite: {fileID: 0}
+    sprite: {fileID: 3084329348980385917, guid: d99980d8fb999a34b91ab846877d9e5f, type: 3}
   finishOnTarget: 1
+  campaignShift: 0
+  weekCampaignVersion: 0
+  campaignDay: 1
+  dailyEventTitle: Grand Opening
+  dailyEventDescription: Welcome your first guests.
+  bossKind: 0
+  platterOrders: []
+  firstWaveSeconds: 70
+  bossArrivalSeconds: 90
+  minimumShiftSeconds: 120
+  bossTimeLimit: 30
+  secondWaveSpawnMultiplier: 0.9
+  bossTitle: AYCE Guest
+  ayceOrders: []
   powerUps:
   - title: Extra Hand
-    description: +1 hand slot for this shift
+    description: +2 hand slots this shift; maximum 11
     effect: 0
   - title: Knife Refill
-    description: Restore 1 spent knife charge
+    description: Restore up to 2 knife charges
     effect: 1
   - title: Conveyor Freeze
-    description: Freeze conveyor for 30 seconds
+    description: Freeze conveyor for 10 seconds
     effect: 2
   - title: Plate Shield
     description: Protect the next missed plate
     effect: 3
   - title: Lucky Draw
-    description: Choose 3 identical allowed cards; needs 3 free slots
+    description: Choose 2 ingredients; needs 2 free slots
     effect: 4
   plateWeights:
   - grade: 0
